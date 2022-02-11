@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">use api with retrofit</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rejected">Rejected</string>
+    <string name="accepted">Accepted</string>
+    <string name="total">Total</string>
+    <string name="department">Department</string>
+    <string name="save">save</string>
+    <string name="file_name">com.example.UserDateFile</string>
+    <string name="userEmail">email</string>
+    <string name="userPassword">password</string>
+    <string name="userToken">token</string>
+    <string name="loginStatus">loginStatus</string>
+    <string name="empId">empId</string>
+</resources>
