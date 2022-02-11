@@ -4,7 +4,7 @@ plugins {
 
 android {
     compileSdkVersion 31
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.0"
 
     defaultConfig {
         applicationId "com.example.useapiwithretrofit"
@@ -24,6 +24,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

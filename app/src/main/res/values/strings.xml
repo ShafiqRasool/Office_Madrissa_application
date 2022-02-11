@@ -13,4 +13,5 @@
     <string name="userToken">token</string>
     <string name="loginStatus">loginStatus</string>
     <string name="empId">empId</string>
+    <string name="pending">Pending</string>
 </resources>

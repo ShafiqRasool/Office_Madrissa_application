@@ -99,6 +99,7 @@ public class login_fragment extends Fragment  {
                     if(response.body()!=null){
                         Toast.makeText(requireContext(),"token is -->"+ response.body().getAccessToken(), Toast.LENGTH_SHORT).show();
                         getUserData(email,password,response.body());
+
                         getSharedPreferencesEditor().putBoolean(String.valueOf(R.string.loginStatus),true).apply();
                         navController.navigate(R.id.action_login_fragment_to_homeFragment);
                     }
@@ -122,7 +123,7 @@ public class login_fragment extends Fragment  {
     public void getUserData(String username, String password, UserTokenModel token_model){
 
         API_Service service=RetrofitClientInstance.getClientInstance().create(API_Service.class);
-        Call<User_model> call=service.getuserInfo(username,password);
+        Call<User_model> call=service.getuserInfo("bearer "+token_model.getAccessToken(),username,password);
         call.enqueue(new Callback<User_model>() {
         @Override
         public void onResponse(@NotNull Call<User_model> call, @NotNull Response<User_model> response) {

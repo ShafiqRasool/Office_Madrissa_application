@@ -2,6 +2,7 @@ package com.example.useapiwithretrofit.Notifications;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
@@ -11,6 +12,7 @@ import com.example.useapiwithretrofit.DB.API_Service;
 import com.example.useapiwithretrofit.DB.NotificationDao;
 import com.example.useapiwithretrofit.DB.NotificationDatabase;
 import com.example.useapiwithretrofit.DB.RetrofitClientInstance;
+import com.example.useapiwithretrofit.R;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -38,7 +40,7 @@ public class NotificationsRepo {
 
     public LiveData<ArrayList<NotificationModel>> getNewNotifications(int EmpId) {
         API_Service service = RetrofitClientInstance.getClientInstance().create(API_Service.class);
-        Call<ArrayList<NotificationModel>> call = service.getNewNotifications(EmpId);
+        Call<ArrayList<NotificationModel>> call = service.getNewNotifications(getToken(),EmpId);
         call.enqueue(new Callback<ArrayList<NotificationModel>>() {
             @Override
             public void onResponse(@NotNull Call<ArrayList<NotificationModel>> call, @NotNull Response<ArrayList<NotificationModel>> response) {
@@ -57,6 +59,12 @@ public class NotificationsRepo {
             }
         });
         return newNotificationsLiveData;
+    }
+    public String getToken(){
+        SharedPreferences preferences= context.getSharedPreferences(String.valueOf(R.string.file_name), Context.MODE_PRIVATE);
+        String mtoken=preferences.getString(String.valueOf(R.string.userToken),"null");
+        String token="bearer "+mtoken;
+        return token;
     }
 
 

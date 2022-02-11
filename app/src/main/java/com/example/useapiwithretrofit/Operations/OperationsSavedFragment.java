@@ -10,9 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.useapiwithretrofit.Operations.Operations;
 import com.example.useapiwithretrofit.databinding.FragmentOperationsSavedBinding;
-import com.example.useapiwithretrofit.Operations.SaveOperationsResponse;
 
 public class OperationsSavedFragment extends Fragment {
     FragmentOperationsSavedBinding mBinding;
@@ -36,7 +34,7 @@ public class OperationsSavedFragment extends Fragment {
         setupViews();
     }
     void setupViews(){
-       SaveOperationsResponse response= Operations.saveResponse;
+       SaveOperationsResponse response= FragmentOperations.saveResponse;
        if(response!=null) {
            mBinding.Code.setText(response.getCode());
            mBinding.CrudNo.setText(String.valueOf(response.getCrudNo()));

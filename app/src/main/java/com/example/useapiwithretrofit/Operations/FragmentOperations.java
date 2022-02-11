@@ -1,6 +1,8 @@
 package com.example.useapiwithretrofit.Operations;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -20,6 +22,7 @@ import com.example.useapiwithretrofit.DB.API_Service;
 import com.example.useapiwithretrofit.R;
 import com.example.useapiwithretrofit.DB.RetrofitClientInstance;
 import com.example.useapiwithretrofit.databinding.FragmentDashboardBinding;
+import com.example.useapiwithretrofit.model.UserOperationsModel;
 import com.github.jhonnyx2012.horizontalpicker.DatePickerListener;
 import com.github.jhonnyx2012.horizontalpicker.HorizontalPicker;
 
@@ -36,7 +39,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Operations extends Fragment {
+public class FragmentOperations extends Fragment {
      FragmentDashboardBinding mBinding;
     ArrayList<UserOperationsModel> userOperationsModelArrayList=new ArrayList<>();
     public static SaveOperationsResponse saveResponse;
@@ -89,8 +92,9 @@ public class Operations extends Fragment {
         ProgressDialog dialog=new ProgressDialog(requireContext());
         dialog.setTitle("Loading...");
         dialog.show();
+
         API_Service service= RetrofitClientInstance.getClientInstance().create(API_Service.class);
-        Call<ArrayList<UserOperationsModel>> call=service.getOperations(empId);
+        Call<ArrayList<UserOperationsModel>> call=service.getOperations(getToken(),empId);
         call.enqueue(new Callback<ArrayList<UserOperationsModel>>() {
             @Override
             public void onResponse(@NotNull Call<ArrayList<UserOperationsModel>> call, @NotNull Response<ArrayList<UserOperationsModel>> response) {
@@ -110,6 +114,12 @@ public class Operations extends Fragment {
             }
         });
     }
+    public String getToken(){
+        SharedPreferences preferences= getContext().getSharedPreferences(String.valueOf(R.string.file_name), Context.MODE_PRIVATE);
+        String mtoken=preferences.getString(String.valueOf(R.string.userToken),"null");
+        String token="bearer "+mtoken;
+        return token;
+    }
 
 
 
@@ -125,7 +135,7 @@ public class Operations extends Fragment {
         }
 
 
-        Call<SaveOperationsResponse> call=service.saveOperations(arrayList);
+        Call<SaveOperationsResponse> call=service.saveOperations(getToken(),arrayList);
        call.enqueue(new Callback<SaveOperationsResponse>() {
            @Override
            public void onResponse(Call<SaveOperationsResponse> call, Response<SaveOperationsResponse> response) {

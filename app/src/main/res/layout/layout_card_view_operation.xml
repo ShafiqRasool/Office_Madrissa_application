@@ -6,23 +6,20 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     app:cardCornerRadius="12dp"
-    app:cardUseCompatPadding="true"
-    app:cardElevation="5dp">
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
         android:layout_margin="5dp"
-        >
+        android:background="@color/white">
 
 
         <TextView
             android:id="@+id/tv_operation_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="14dp"
             android:elevation="8dp"
             android:gravity="left"
             android:padding="3dp"
@@ -30,49 +27,184 @@
             android:textColor="@color/custom_pink"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <EditText
             android:id="@+id/tv_remarks_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="2dp"
             android:hint="Remarks"
-            android:visibility="gone"
             android:minHeight="48dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switch_action" />
+            app:layout_constraintTop_toBottomOf="@+id/view_remark" />
 
         <View
             android:id="@+id/view_remark"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="5dp"
-            android:visibility="invisible"
+            android:layout_marginTop="8dp"
             android:background="@color/custom_gray"
-            app:layout_constraintBottom_toTopOf="@+id/tv_remarks_card"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switch_action" />
+            app:layout_constraintTop_toBottomOf="@id/tvPerformedBy1" />
 
         <Switch
             android:id="@+id/switch_action"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
             android:minHeight="48dp"
             android:padding="5dp"
             android:textOff="Rejected"
             android:textOn="Accepted"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_operation_card"
             app:layout_constraintTop_toTopOf="parent"
-            tools:checked="true" />
+            tools:checked="true"
+            tools:layout_editor_absoluteX="155dp" />
+        <View
+            android:id="@+id/view_vertical"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            android:background="@color/custom_gray"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/switch_action"
+            app:layout_constraintBottom_toTopOf="@+id/view_remark"
+            />
+
+        <TextView
+            android:id="@+id/tvcode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="code"
+            android:background="@color/light_light_gray"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/et_code_show"
+            app:layout_constraintTop_toBottomOf="@id/tv_operation_card" />
+
+        <TextView
+            android:id="@+id/et_code_show"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="23"
+            android:background="@color/light_light_gray"
+            app:layout_constraintEnd_toEndOf="@+id/view_vertical"
+            app:layout_constraintStart_toEndOf="@+id/tvcode"
+            app:layout_constraintTop_toTopOf="@+id/tvcode" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/custom_gray"
+            app:layout_constraintEnd_toStartOf="@+id/view_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvcode" />
+
+        <TextView
+            android:id="@+id/tv_description1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/tv_description_show"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvcode" />
+
+        <TextView
+            android:id="@+id/tv_description_show"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/view_vertical"
+            app:layout_constraintStart_toEndOf="@+id/tv_description1"
+            app:layout_constraintTop_toTopOf="@+id/tv_description1"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/custom_gray"
+            app:layout_constraintEnd_toStartOf="@+id/view_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@id/tv_description1" />
+        <TextView
+            android:id="@+id/tvSection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Section"
+            android:background="@color/light_light_gray"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/tvSection_show"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_description1" />
+
+        <TextView
+            android:id="@+id/tvSection_show"
+            android:layout_width="0dp"
+            android:background="@color/light_light_gray"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/view_vertical"
+            app:layout_constraintStart_toEndOf="@+id/tvSection"
+            app:layout_constraintTop_toTopOf="@+id/tvSection" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/custom_gray"
+            app:layout_constraintEnd_toStartOf="@+id/view_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSection" />
+
+        <TextView
+            android:id="@+id/tvPerformedBy1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Performed By"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvPerformedBy_show"
+            app:layout_constraintTop_toBottomOf="@id/tvSection" />
+
+        <TextView
+            android:id="@+id/tvPerformedBy_show"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/view_vertical"
+            app:layout_constraintTop_toTopOf="@id/tvPerformedBy1"
+            app:layout_constraintStart_toEndOf="@id/tvPerformedBy1"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/custom_gray"
+            app:layout_constraintEnd_toStartOf="@+id/view_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPerformedBy1" />
+        <TextView
+            android:id="@+id/tvpriority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Priority"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvpriority_show"
+            app:layout_constraintTop_toBottomOf="@id/tvpriority_show" />
+
+        <TextView
+            android:id="@+id/tvpriority_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="low"
+            android:textColor="@color/red"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/switch_action" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

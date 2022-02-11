@@ -1,8 +1,9 @@
 package com.example.useapiwithretrofit.DB;
 
 import com.example.useapiwithretrofit.Notifications.NotificationModel;
+import com.example.useapiwithretrofit.model.PendingModel;
 import com.example.useapiwithretrofit.Operations.SaveOperationsResponse;
-import com.example.useapiwithretrofit.Operations.UserOperationsModel;
+import com.example.useapiwithretrofit.model.UserOperationsModel;
 import com.example.useapiwithretrofit.model.User_model;
 import com.example.useapiwithretrofit.model.UserTokenModel;
 
@@ -13,8 +14,8 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface API_Service {
@@ -24,16 +25,19 @@ public interface API_Service {
     Call<UserTokenModel> getUserToken(@Field("username") String username, @Field("password") String password, @Field("grant_type") String grant_type);
 
     @GET("api/AppUser/GetUserInfo")
-    Call<User_model> getuserInfo(@Query("username") String username, @Query("password") String password);
+    Call<User_model> getuserInfo(@Header ("Authorization") String auth,@Query("username") String username, @Query("password") String password);
 
     @GET("api/AppApi/GetOprList")
-    Call<ArrayList<UserOperationsModel>> getOperations(@Query("Emp_Id") Integer empId);
+    Call<ArrayList<UserOperationsModel>> getOperations(@Header ("Authorization") String auth,@Query("Emp_Id") Integer empId);
 
     @POST("api/AppApi/Opr_Activity_Exe")
-    Call<SaveOperationsResponse> saveOperations(@Body ArrayList<UserOperationsModel>  operationsModels);
+    Call<SaveOperationsResponse> saveOperations(@Header ("Authorization") String auth,@Body ArrayList<UserOperationsModel>  operationsModels);
 
     @GET("api/AppApi/AMIC_Read_Notification")
-    Call<ArrayList<NotificationModel>>  getNewNotifications(@Query("Emp_Id") Integer empId);
+    Call<ArrayList<NotificationModel>>  getNewNotifications(@Header ("Authorization") String auth,@Query("Emp_Id") Integer empId);
+
+    @GET("api/DailyOprActivities/Get_Kpi_Operations_Pending_List")
+    Call<ArrayList<PendingModel>>  getPendingOperation(@Header ("Authorization") String auth,@Query("Emp_id") Integer empId);
 
 
 }

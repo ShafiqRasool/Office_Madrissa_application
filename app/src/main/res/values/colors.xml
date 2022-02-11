@@ -12,5 +12,7 @@
     <color name="custom_pink">#002725</color>
     <color name="custom_pink_light">#01D878</color>
     <color name="red">#C30000</color>
+    <color name="light_light_gray">#D0DFDEDE</color>
+
 
 </resources>

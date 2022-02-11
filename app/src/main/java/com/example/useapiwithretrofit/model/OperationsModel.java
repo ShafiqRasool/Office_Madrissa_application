@@ -1,4 +1,4 @@
-package com.example.useapiwithretrofit.Operations;
+package com.example.useapiwithretrofit.model;
 
 public class OperationsModel {
     private String operation="";

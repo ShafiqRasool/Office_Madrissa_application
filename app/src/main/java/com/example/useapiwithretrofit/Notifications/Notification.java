@@ -2,8 +2,6 @@ package com.example.useapiwithretrofit.Notifications;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
@@ -14,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
@@ -31,6 +30,7 @@ import android.widget.LinearLayout;
 import com.example.useapiwithretrofit.MainActivity;
 import com.example.useapiwithretrofit.R;
 import com.example.useapiwithretrofit.databinding.FragmentNotificationBinding;
+import com.example.useapiwithretrofit.databinding.FragmentPendingOperationsBinding;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -39,7 +39,7 @@ import java.util.ArrayList;
 import static android.content.Context.NOTIFICATION_SERVICE;
 
 public class Notification extends Fragment {
-    FragmentNotificationBinding mBinding;
+   FragmentNotificationBinding mBinding;
     NotificationViewModel viewModel;
     NotificationAdapter adapter;
 
@@ -53,7 +53,7 @@ public class Notification extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mBinding = FragmentNotificationBinding.inflate(getLayoutInflater());
+        mBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_notification,container,false);
         return mBinding.getRoot();
     }
 
@@ -67,6 +67,7 @@ public class Notification extends Fragment {
         DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(requireContext(), layoutManager.getOrientation());
         mBinding.RecViewNotifications.addItemDecoration(dividerItemDecoration);
         viewModel = new ViewModelProvider(this).get(NotificationViewModel.class);
+
         viewModel.getLiveNotifications().observe(getViewLifecycleOwner(), new Observer<ArrayList<NotificationModel>>() {
             @Override
             public void onChanged(ArrayList<NotificationModel> notificationModels) {
@@ -74,7 +75,7 @@ public class Notification extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         });
-        displayNotification();
+       // displayNotification();
 //
 //        PeriodicWorkRequest saveRequest =
 //                new PeriodicWorkRequest.Builder(ReperateWork.class, 1000, TimeUnit.MILLISECONDS)
@@ -86,6 +87,7 @@ public class Notification extends Fragment {
 //                .enqueue(saveRequest);
 //
     }
+
     NotificationManager mNotificationManager;
     @RequiresApi(api = Build.VERSION_CODES.O)
     protected void displayNotification() {
@@ -134,11 +136,11 @@ public class Notification extends Fragment {
 //        PendingIntent resultPendingIntent =stackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
 
 //        mBuilder.setContentIntent(resultPendingIntent);
-        NotificationChannel channel=new NotificationChannel(15,"mychannel",NotificationManager.IMPORTANCE_DEFAULT);
-        mNotificationManager = (NotificationManager) requireActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+       // NotificationChannel channel=new NotificationChannel(,"mychannel",NotificationManager.IMPORTANCE_DEFAULT);
+       // mNotificationManager = (NotificationManager) requireActivity().getSystemService(Context.NOTIFICATION_SERVICE);
 
         /* notificationID allows you to update the notification later on. */
-        mNotificationManager.notify(15, mBuilder.build());
+       // mNotificationManager.notify(15, mBuilder.build());
     }
 
 
