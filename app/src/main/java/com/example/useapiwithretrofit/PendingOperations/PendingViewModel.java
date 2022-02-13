@@ -1,8 +1,6 @@
-package com.example.useapiwithretrofit.Operations;
+package com.example.useapiwithretrofit.PendingOperations;
 
 import android.app.Application;
-import android.app.ProgressDialog;
-import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;

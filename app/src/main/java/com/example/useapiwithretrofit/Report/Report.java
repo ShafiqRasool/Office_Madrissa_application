@@ -19,7 +19,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.example.useapiwithretrofit.Operations.OperationSimpleReportModel;
 import com.example.useapiwithretrofit.R;
 import com.example.useapiwithretrofit.databinding.FragmentSearchOrdersBinding;
 import com.github.mikephil.charting.data.BarData;

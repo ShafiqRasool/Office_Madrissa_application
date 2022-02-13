@@ -1,6 +1,8 @@
 package com.example.useapiwithretrofit.DB;
 
 import com.example.useapiwithretrofit.Notifications.NotificationModel;
+import com.example.useapiwithretrofit.model.OperationsModel;
+import com.example.useapiwithretrofit.model.OperationsSavedModel;
 import com.example.useapiwithretrofit.model.PendingModel;
 import com.example.useapiwithretrofit.Operations.SaveOperationsResponse;
 import com.example.useapiwithretrofit.model.UserOperationsModel;
@@ -30,14 +32,14 @@ public interface API_Service {
     @GET("api/AppApi/GetOprList")
     Call<ArrayList<UserOperationsModel>> getOperations(@Header ("Authorization") String auth,@Query("Emp_Id") Integer empId);
 
-    @POST("api/AppApi/Opr_Activity_Exe")
-    Call<SaveOperationsResponse> saveOperations(@Header ("Authorization") String auth,@Body ArrayList<UserOperationsModel>  operationsModels);
-
     @GET("api/AppApi/AMIC_Read_Notification")
     Call<ArrayList<NotificationModel>>  getNewNotifications(@Header ("Authorization") String auth,@Query("Emp_Id") Integer empId);
 
     @GET("api/DailyOprActivities/Get_Kpi_Operations_Pending_List")
     Call<ArrayList<PendingModel>>  getPendingOperation(@Header ("Authorization") String auth,@Query("Emp_id") Integer empId);
 
-
+    @GET("api/DailyOprActivities/Get_Kpi_Operations")
+    Call<ArrayList<OperationsModel>>  getDailyNotifications(@Header ("Authorization") String auth, @Query("Emp_id") int empId, @Query("Opr_Trans_Date") String operationsDate);
+    @POST("api/DailyOprActivities/Save_Kpi_Operations")
+    Call<OperationsSavedModel> saveDailyOperationsList(@Header ("Authorization") String auth, @Body ArrayList<OperationsModel> arrayList);
 }

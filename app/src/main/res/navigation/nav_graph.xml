@@ -9,7 +9,11 @@
         android:id="@+id/dashboard_fragment"
         android:name="com.example.useapiwithretrofit.Operations.FragmentOperations"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <argument
+            android:name="Date"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/login_fragment"
         android:name="com.example.useapiwithretrofit.fragments.login_fragment"
@@ -41,6 +45,12 @@
         tools:layout="@layout/fragment_about_us" />
     <fragment
         android:id="@+id/fragmentPendingOperations"
-        android:name="com.example.useapiwithretrofit.Operations.FragmentPendingOperations"
-        android:label="FragmentPendingOperations" />
+        android:name="com.example.useapiwithretrofit.PendingOperations.FragmentPendingOperations"
+        android:label="FragmentPendingOperations" >
+        <action
+            android:id="@+id/action_fragmentPendingOperations_to_dashboard_fragment"
+            app:destination="@id/dashboard_fragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/dashboard_fragment" />
+    </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.useapiwithretrofit.Operations;
+package com.example.useapiwithretrofit.Report;
 
 public class OperationSimpleReportModel {
 private String Department;

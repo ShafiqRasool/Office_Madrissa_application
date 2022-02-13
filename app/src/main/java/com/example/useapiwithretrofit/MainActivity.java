@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         mainBinding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mainBinding.getRoot());
         setUpNavigation();
+      //  AppBarConfiguration appBarConfiguration=AppBarConfiguration(nav_controller.getGraph(),mainBinding.);
         nav_controller.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull  NavController controller,
@@ -55,9 +56,6 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }else if(mainBinding.drawerLayout.isDrawerOpen(GravityCompat.START)){
             mainBinding.drawerLayout.closeDrawers();
-        }else if(current_des_id==R.id.dashboard_fragment){
-            nav_controller.navigate(R.id.homeFragment);
-
         }else if(current_des_id==R.id.search_orders){
             nav_controller.navigate(R.id.homeFragment);
 
@@ -66,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         }else if(current_des_id==R.id.about_us){
             nav_controller.navigate(R.id.homeFragment);
-        }else{
+        }else {
         super.onBackPressed();
         }
     }

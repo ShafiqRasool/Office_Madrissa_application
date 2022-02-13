@@ -1,44 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="OperationsList"
+            type="com.example.useapiwithretrofit.model.FragmentOperationModel" />
+
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Operations.FragmentOperations"
-    android:background="@color/custom_gray_light">
+    android:background="@color/custom_gray_light"
+    >
 
-    <com.github.jhonnyx2012.horizontalpicker.HorizontalPicker
-        android:id="@+id/tv_date_top"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:clipToPadding="false"
-        app:layout_constraintTop_toBottomOf="@+id/tv_date_top"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/layout_card_view_operation" />
+
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/floatingButtonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:text="@string/save"
-        android:textSize="16sp"
         android:textColor="@color/white"
+        android:textSize="16sp"
+        app:elevation="8dp"
+        app:icon="@drawable/ic_baseline_save_alt_24"
+        app:iconTint="@color/white"
+        android:onClick="@{()->OperationsList.saveOperations()}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/floatingButtonSend"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/floatingButtonSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Send"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:elevation="8dp"
+        android:onClick="@{()->OperationsList.sendOperations()}"
+        app:icon="@drawable/ic_baseline_send_24"
+        app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="8dp"
-        app:elevation="8dp"
-        app:icon="@drawable/ic_baseline_check_24"
-        app:iconTint="@color/white"
-        />
+        app:layout_constraintStart_toEndOf="@+id/floatingButtonSave" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
