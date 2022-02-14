@@ -52,7 +52,8 @@ public class FragmentOperations extends Fragment {
     static OperationsViewModel viewModel;
     public static SaveOperationsResponse saveResponse;
     NavController navController;
-    DateTime dateTime;
+    static int EmpId;
+    static String date;
     SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
 
     @Override
@@ -72,20 +73,15 @@ public class FragmentOperations extends Fragment {
         mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         mBinding.recyclerView.setAdapter(adapter);
 
-        String date=FragmentOperationsArgs.fromBundle(getArguments()).getDate();
+        date=FragmentOperationsArgs.fromBundle(getArguments()).getDate();
         viewModel=new ViewModelProvider(this).get(OperationsViewModel.class);
         viewModel.setDate(date);
 
         SharedPreferences preferences= requireContext().getSharedPreferences(String.valueOf(R.string.file_name),Context.MODE_PRIVATE);
-        int EmpId=preferences.getInt(String.valueOf(R.string.empId),0);
+        EmpId=preferences.getInt(String.valueOf(R.string.empId),0);
         viewModel.getLiveDailyOperations().observe(getViewLifecycleOwner(), new Observer<ArrayList<OperationsModel>>() {
             @Override
             public void onChanged(ArrayList<OperationsModel> modelArrayList) {
-               for(int x=0;modelArrayList.size()>x;x++){
-                   OperationsModel model=modelArrayList.get(x);
-                   model.setOperationsTransDate(date);
-                   model.setEmp_id(EmpId);
-               }
                 adapter.setResult(modelArrayList);
                 adapter.notifyDataSetChanged();
             }
@@ -100,7 +96,9 @@ public class FragmentOperations extends Fragment {
         ArrayList<OperationsModel> operationsModels=OperationAdapter.getModelArrayList();
         for(int x=0;operationsModels.size()>x;x++) {
            OperationsModel model=operationsModels.get(x);
-           model.setSend(false);
+            model.setSend(false);
+            model.setOperationsTransDate(date);
+            model.setEmp_id(EmpId);
         }
             viewModel.saveOperations();
     }

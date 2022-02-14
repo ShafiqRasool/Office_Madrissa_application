@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.1095" />
         <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/fragment_dashboard.xml" value="0.9" />
+        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/fragment_notification.xml" value="0.7892271662763466" />
         <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/fragment_pending_operations.xml" value="0.5525793650793651" />
         <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/layout_card_view_operation.xml" value="0.5701357466063348" />
         <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/single_item_notification.xml" value="0.5525793650793651" />
