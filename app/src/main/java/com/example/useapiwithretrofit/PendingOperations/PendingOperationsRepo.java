@@ -7,7 +7,7 @@ import androidx.navigation.NavController;
 import com.example.useapiwithretrofit.DB.API_Service;
 import com.example.useapiwithretrofit.DB.RetrofitClientInstance;
 import com.example.useapiwithretrofit.R;
-import com.example.useapiwithretrofit.Utils.SharedPreferences;
+import com.example.useapiwithretrofit.Utils.SharedPreferencesHelper;
 import com.example.useapiwithretrofit.model.PendingModel;
 
 import java.util.ArrayList;
@@ -33,7 +33,8 @@ public class PendingOperationsRepo {
 
     public void getPendingOperations(int empId) {
         API_Service service = RetrofitClientInstance.getClientInstance().create(API_Service.class);
-        Call<ArrayList<PendingModel>> call = service.getPendingOperation(getToken(),getEmpId());
+        SharedPreferencesHelper.getInstance(context).getToken();
+        Call<ArrayList<PendingModel>> call = service.getPendingOperation(SharedPreferencesHelper.getInstance(context).getToken(),SharedPreferencesHelper.getInstance(context).getEmpId());
         call.enqueue(new Callback<ArrayList<PendingModel>>() {
             @Override
             public void onResponse(Call<ArrayList<PendingModel>> call, Response<ArrayList<PendingModel>> response) {

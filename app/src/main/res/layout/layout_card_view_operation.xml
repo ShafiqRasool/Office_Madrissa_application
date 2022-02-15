@@ -6,14 +6,11 @@
     <data>
 
         <import type="android.view.View" />
-
         <variable
             name="operations"
             type="com.example.useapiwithretrofit.model.OperationsModel" />
 
-        <variable
-            name="SwitchClicked"
-            type="com.example.useapiwithretrofit.model.CustomOperationsClick" />
+
     </data>
 
     <androidx.cardview.widget.CardView
@@ -51,7 +48,7 @@
                 android:layout_marginTop="2dp"
                 android:hint="Remarks"
                 android:minHeight="48dp"
-                android:visibility="gone"
+                android:visibility="@{operations.status?View.GONE:View.VISIBLE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view_remark" />
@@ -73,8 +70,6 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:minHeight="48dp"
-                android:onClick="@{()->SwitchClicked.data(operations)}"
-
                 android:padding="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

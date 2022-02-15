@@ -4,27 +4,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="OperationsList"
-            type="com.example.useapiwithretrofit.model.FragmentOperationModel" />
-
+            name="OperationsViewModel"
+            type="com.example.useapiwithretrofit.operations.OperationsViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Operations.FragmentOperations"
+    tools:context=".operations.FragmentOperations"
     android:background="@color/custom_gray_light"
     >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:clipToPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:SetCustomAdapter="@{OperationsViewModel.adapter}"
         tools:listitem="@layout/layout_card_view_operation" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -38,7 +38,7 @@
         app:elevation="8dp"
         app:icon="@drawable/ic_baseline_save_alt_24"
         app:iconTint="@color/white"
-        android:onClick="@{()->OperationsList.saveOperations()}"
+        android:onClick="@{()->OperationsViewModel.saveOperations()}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/floatingButtonSend"
         app:layout_constraintStart_toStartOf="parent" />
@@ -52,7 +52,7 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         app:elevation="8dp"
-        android:onClick="@{()->OperationsList.sendOperations()}"
+        android:onClick="@{()->OperationsViewModel.SendOperations()}"
         app:icon="@drawable/ic_baseline_send_24"
         app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

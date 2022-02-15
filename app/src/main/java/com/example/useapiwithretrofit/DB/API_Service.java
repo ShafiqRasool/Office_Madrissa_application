@@ -2,9 +2,9 @@ package com.example.useapiwithretrofit.DB;
 
 import com.example.useapiwithretrofit.Notifications.NotificationModel;
 import com.example.useapiwithretrofit.model.OperationsModel;
-import com.example.useapiwithretrofit.model.OperationsSavedModel;
+import com.example.useapiwithretrofit.model.SaveOperationsModel;
 import com.example.useapiwithretrofit.model.PendingModel;
-import com.example.useapiwithretrofit.Operations.SaveOperationsResponse;
+import com.example.useapiwithretrofit.model.SaveOperationsResponse;
 import com.example.useapiwithretrofit.model.UserOperationsModel;
 import com.example.useapiwithretrofit.model.User_model;
 import com.example.useapiwithretrofit.model.UserTokenModel;
@@ -41,5 +41,5 @@ public interface API_Service {
     @GET("api/DailyOprActivities/Get_Kpi_Operations")
     Call<ArrayList<OperationsModel>>  getDailyNotifications(@Header ("Authorization") String auth, @Query("Emp_id") int empId, @Query("Opr_Trans_Date") String operationsDate);
     @POST("api/DailyOprActivities/Save_Kpi_Operations")
-    Call<OperationsSavedModel> saveDailyOperationsList(@Header ("Authorization") String auth, @Body ArrayList<OperationsModel> arrayList);
+    Call<SaveOperationsResponse> saveDailyOperationsList(@Header ("Authorization") String auth, @Body ArrayList<SaveOperationsModel> arrayList);
 }

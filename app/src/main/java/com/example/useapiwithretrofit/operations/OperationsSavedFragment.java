@@ -1,4 +1,4 @@
-package com.example.useapiwithretrofit.Operations;
+package com.example.useapiwithretrofit.operations;
 
 import android.os.Bundle;
 

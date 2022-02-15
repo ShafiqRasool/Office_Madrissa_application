@@ -3,7 +3,7 @@ package com.example.useapiwithretrofit.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class OperationsSavedModel {
+public class SaveOperationsModel {
     @SerializedName("Opr_Id")
     @Expose
     private int oprId;

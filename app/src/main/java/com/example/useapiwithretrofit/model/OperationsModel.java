@@ -1,15 +1,20 @@
 package com.example.useapiwithretrofit.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 import androidx.databinding.BindingAdapter;
+import androidx.databinding.ObservableField;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class OperationsModel {
+public class OperationsModel extends BaseObservable implements Parcelable {
 
     @SerializedName("Opr_Code")
     @Expose
@@ -30,15 +35,18 @@ public class OperationsModel {
     @Expose
     private String priority;
 
+
     @SerializedName("Opr_Id")
     @Expose
     private int oprId;
     @SerializedName("Opr_Trans_Id")
     @Expose
     private int oprTransId;
+
+    @Bindable
     @SerializedName("Status")
     @Expose
-    private boolean status;
+    private boolean status=true;
     @SerializedName("Remarks")
     @Expose
     private String remarks;
@@ -51,6 +59,34 @@ public class OperationsModel {
     @SerializedName("Is_Send")
     @Expose
     private boolean IsSend;
+
+    protected OperationsModel(Parcel in) {
+        oprCode = in.readString();
+        oprDesc = in.readString();
+        departmentName = in.readString();
+        locationName = in.readString();
+        empName = in.readString();
+        priority = in.readString();
+        oprId = in.readInt();
+        oprTransId = in.readInt();
+        status = in.readByte() != 0;
+        remarks = in.readString();
+        OperationsTransDate = in.readString();
+        Emp_id = in.readInt();
+        IsSend = in.readByte() != 0;
+    }
+
+    public static final Creator<OperationsModel> CREATOR = new Creator<OperationsModel>() {
+        @Override
+        public OperationsModel createFromParcel(Parcel in) {
+            return new OperationsModel(in);
+        }
+
+        @Override
+        public OperationsModel[] newArray(int size) {
+            return new OperationsModel[size];
+        }
+    };
 
     public int getOprId() {
         return oprId;
@@ -140,12 +176,16 @@ public class OperationsModel {
         this.oprTransId = oprTransId;
     }
 
+
     public boolean isStatus() {
         return status;
     }
 
     public void setStatus(boolean status) {
-        this.status = status;
+        if(status!=this.status){
+            this.status = status;
+            notifyChange();
+        }
     }
 
     public String getRemarks() {
@@ -156,4 +196,25 @@ public class OperationsModel {
         this.remarks = remarks;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(oprCode);
+        parcel.writeString(oprDesc);
+        parcel.writeString(departmentName);
+        parcel.writeString(locationName);
+        parcel.writeString(empName);
+        parcel.writeString(priority);
+        parcel.writeInt(oprId);
+        parcel.writeInt(oprTransId);
+        parcel.writeByte((byte) (status ? 1 : 0));
+        parcel.writeString(remarks);
+        parcel.writeString(OperationsTransDate);
+        parcel.writeInt(Emp_id);
+        parcel.writeByte((byte) (IsSend ? 1 : 0));
+    }
 }

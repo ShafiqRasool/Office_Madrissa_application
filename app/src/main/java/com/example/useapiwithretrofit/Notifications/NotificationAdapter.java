@@ -35,6 +35,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         holder.binding.tvDescription.setText(arrayList.get(position).getNotiDesc());
+
     }
 
     @Override

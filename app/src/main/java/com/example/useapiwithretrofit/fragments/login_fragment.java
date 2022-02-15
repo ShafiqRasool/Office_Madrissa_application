@@ -82,10 +82,14 @@ public class login_fragment extends Fragment  {
 
 
     void checkLoginStatus(){
-        SharedPreferences preferences=getReadSharedPreference();
-        boolean token=preferences.getBoolean(String.valueOf(R.string.loginStatus),false);
-        if(token){
-            navController.navigate(R.id.action_login_fragment_to_homeFragment);
+        try {
+            SharedPreferences preferences = getReadSharedPreference();
+            boolean token = preferences.getBoolean(String.valueOf(R.string.loginStatus), false);
+            if (token) {
+                navController.navigate(R.id.action_login_fragment_to_homeFragment);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
