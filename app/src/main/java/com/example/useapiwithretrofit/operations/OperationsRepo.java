@@ -70,7 +70,7 @@ public class OperationsRepo {
 
             @Override
             public void onFailure(Call<SaveOperationsResponse> call, Throwable t) {
-                Toast.makeText(context, "not save", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "not save"+t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
 

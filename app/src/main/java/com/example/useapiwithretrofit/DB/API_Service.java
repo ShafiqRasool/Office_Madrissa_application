@@ -40,6 +40,7 @@ public interface API_Service {
 
     @GET("api/DailyOprActivities/Get_Kpi_Operations")
     Call<ArrayList<OperationsModel>>  getDailyNotifications(@Header ("Authorization") String auth, @Query("Emp_id") int empId, @Query("Opr_Trans_Date") String operationsDate);
+
     @POST("api/DailyOprActivities/Save_Kpi_Operations")
     Call<SaveOperationsResponse> saveDailyOperationsList(@Header ("Authorization") String auth, @Body ArrayList<SaveOperationsModel> arrayList);
 }

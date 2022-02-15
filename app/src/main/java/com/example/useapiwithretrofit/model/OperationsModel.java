@@ -5,6 +5,7 @@ import android.os.Parcelable;
 import android.view.View;
 import android.widget.EditText;
 
+
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import androidx.databinding.BindingAdapter;
