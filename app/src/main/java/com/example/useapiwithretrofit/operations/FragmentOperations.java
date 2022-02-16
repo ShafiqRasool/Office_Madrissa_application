@@ -54,7 +54,7 @@ public class FragmentOperations extends Fragment {
         mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         mBinding.recyclerView.setAdapter(adapter);
 
-        date=FragmentOperationsArgs.fromBundle(getArguments()).getDate();
+        date=FragmentOperationsArgs.fromBundle(getArguments()).getDate().replace("-","");
         viewModel=new ViewModelProvider(this).get(OperationsViewModel.class);
         viewModel.setDate(date);
 

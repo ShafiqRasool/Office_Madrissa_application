@@ -60,17 +60,18 @@ public class OperationsRepo {
         Call<SaveOperationsResponse> call = service.saveDailyOperationsList(token, arrayList);
         call.enqueue(new Callback<SaveOperationsResponse>() {
             @Override
-            public void onResponse(Call<SaveOperationsResponse> call, Response<SaveOperationsResponse> response) {
+            public void onResponse(@NonNull Call<SaveOperationsResponse> call, @NonNull Response<SaveOperationsResponse> response) {
                 if(response.isSuccessful()){
                     if(response.body()!=null){
+
                         Toast.makeText(context, response.body().getStrMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
 
             @Override
-            public void onFailure(Call<SaveOperationsResponse> call, Throwable t) {
-                Toast.makeText(context, "not save"+t.toString(), Toast.LENGTH_SHORT).show();
+            public void onFailure(@NonNull Call<SaveOperationsResponse> call, @NonNull Throwable t) {
+                Toast.makeText(context, "not save", Toast.LENGTH_SHORT).show();
             }
         });
 

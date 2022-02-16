@@ -15,6 +15,8 @@ import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 public class OperationsModel extends BaseObservable implements Parcelable {
 
     @SerializedName("Opr_Code")
@@ -47,7 +49,9 @@ public class OperationsModel extends BaseObservable implements Parcelable {
     @Bindable
     @SerializedName("Status")
     @Expose
-    private boolean status=true;
+    private boolean status;
+
+    @Bindable
     @SerializedName("Remarks")
     @Expose
     private String remarks;
@@ -194,7 +198,9 @@ public class OperationsModel extends BaseObservable implements Parcelable {
     }
 
     public void setRemarks(String remarks) {
+        if(!Objects.equals(remarks, this.remarks))
         this.remarks = remarks;
+        notifyChange();
     }
 
     @Override

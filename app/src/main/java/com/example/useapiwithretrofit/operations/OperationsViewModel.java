@@ -26,7 +26,6 @@ public class OperationsViewModel extends AndroidViewModel {
     public OperationsViewModel(@NonNull Application application) {
         super(application);
         repo = new OperationsRepo(application);
-        repo.getDailyOperations("something");
         adapter = new OperationAdapter();
         getDailyOperations();
        EmpId=SharedPreferencesHelper.getInstance(repo.context).getEmpId();
@@ -42,6 +41,7 @@ public class OperationsViewModel extends AndroidViewModel {
 
     public void setDate(String date) {
         this.date = date;
+        repo.getDailyOperations(date);
     }
 
 

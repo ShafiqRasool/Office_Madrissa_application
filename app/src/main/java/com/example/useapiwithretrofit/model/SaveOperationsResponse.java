@@ -7,7 +7,7 @@ public class SaveOperationsResponse {
 
     @SerializedName("RcKey")
     @Expose
-    private Long rcKey;
+    private int rcKey;
     @SerializedName("StrMessage")
     @Expose
     private String strMessage;
@@ -16,16 +16,16 @@ public class SaveOperationsResponse {
     private String notifyMessage;
     @SerializedName("CrudNo")
     @Expose
-    private Long crudNo;
+    private int crudNo;
     @SerializedName("Status")
     @Expose
-    private boolean status;
+    private int status;
     @SerializedName("ReturnId")
     @Expose
-    private Float returnId;
+    private double returnId;
     @SerializedName("Code")
     @Expose
-    private Integer code;
+    private String code;
     @SerializedName("ID")
     @Expose
     private Long id;
@@ -42,12 +42,11 @@ public class SaveOperationsResponse {
     @Expose
     private String userName;
 
-
-    public Long getRcKey() {
+    public int getRcKey() {
         return rcKey;
     }
 
-    public void setRcKey(Long rcKey) {
+    public void setRcKey(int rcKey) {
         this.rcKey = rcKey;
     }
 
@@ -67,35 +66,35 @@ public class SaveOperationsResponse {
         this.notifyMessage = notifyMessage;
     }
 
-    public Long getCrudNo() {
+    public int getCrudNo() {
         return crudNo;
     }
 
-    public void setCrudNo(Long crudNo) {
+    public void setCrudNo(int crudNo) {
         this.crudNo = crudNo;
     }
 
-    public boolean isStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    public Float getReturnId() {
+    public double getReturnId() {
         return returnId;
     }
 
-    public void setReturnId(Float returnId) {
+    public void setReturnId(double returnId) {
         this.returnId = returnId;
     }
 
-    public Integer getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(Integer code) {
+    public void setCode(String code) {
         this.code = code;
     }
 

@@ -9,7 +9,14 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
+
+import com.example.useapiwithretrofit.DB.API_Service;
+import com.example.useapiwithretrofit.DB.RetrofitClientInstance;
 import com.example.useapiwithretrofit.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -46,6 +53,15 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         NavigationUI.setupWithNavController(mainBinding.navigationView, nav_controller);
         NavigationUI.setupWithNavController(mainBinding.bottomNavigation,nav_controller);
+
+//        mainBinding.navigationView.getMenu().getItem(R.id.login_fragment).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem menuItem) {
+//                SharedPreferences.Editor preference= (SharedPreferences.Editor) getApplicationContext().getSharedPreferences(String.valueOf(R.string.file_name), Context.MODE_PRIVATE);
+//                preference.putBoolean(String.valueOf(R.string.loginStatus),false);
+//                return true;
+//            }
+//        });
 
     }
 

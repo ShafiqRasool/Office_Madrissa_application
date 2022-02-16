@@ -52,6 +52,5 @@ public class FragmentPendingOperations extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         });
-
     }
 }

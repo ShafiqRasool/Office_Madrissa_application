@@ -185,7 +185,7 @@
                 android:id="@+id/tvpriority_show"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="low"
+                android:text="@{operations.priority}"
                 android:textColor="@color/red"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -48,6 +48,7 @@ public class PendingOperationsAdapter extends RecyclerView.Adapter<PendingOperat
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         PendingModel model=arrayList.get(position);
+        model.setDateString(model.getDate().substring(0,10));
         holder.bind(model);
         holder.binding.cardViewPending.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -123,7 +123,6 @@ public class login_fragment extends Fragment  {
     }
 
 
-
     public void getUserData(String username, String password, UserTokenModel token_model){
 
         API_Service service=RetrofitClientInstance.getClientInstance().create(API_Service.class);
@@ -140,7 +139,7 @@ public class login_fragment extends Fragment  {
                    editor.putString(String.valueOf(R.string.userPassword),password);
                    editor.putString(String.valueOf(R.string.userToken),"bearer "+token_model.getAccessToken());
                    editor.putBoolean(String.valueOf(R.string.loginStatus),true);
-                   editor.putInt(String.valueOf(R.string.empId),user_model.getEmpId());
+                   editor.putInt(String.valueOf(R.string.empId),user_model.getId());
                    editor.apply();
 
                }

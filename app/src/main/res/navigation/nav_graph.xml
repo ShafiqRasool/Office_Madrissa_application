@@ -51,6 +51,6 @@
             android:id="@+id/action_fragmentPendingOperations_to_dashboard_fragment"
             app:destination="@id/dashboard_fragment"
             app:launchSingleTop="false"
-            app:popUpTo="@id/dashboard_fragment" />
+            app:popUpToInclusive="false" />
     </fragment>
 </navigation>
