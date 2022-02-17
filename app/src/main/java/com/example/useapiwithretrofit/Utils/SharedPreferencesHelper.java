@@ -18,7 +18,7 @@ public class SharedPreferencesHelper {
         }
     }
 
-    public static SharedPreferencesHelper getInstance(Context context){
+    public static synchronized SharedPreferencesHelper getInstance(Context context){
         if(Instance==null){
             Instance= (SharedPreferencesHelper) new SharedPreferencesHelper(context);
         }

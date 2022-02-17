@@ -1,12 +1,16 @@
 package com.example.useapiwithretrofit.operations;
 
+import android.app.Activity;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
+import androidx.navigation.NavController;
 
+import com.example.useapiwithretrofit.CustomAlertDialog;
+import com.example.useapiwithretrofit.R;
 import com.example.useapiwithretrofit.Utils.SharedPreferencesHelper;
 import com.example.useapiwithretrofit.databinding.LayoutCardViewOperationBinding;
 import com.example.useapiwithretrofit.model.OperationsModel;
@@ -22,6 +26,8 @@ public class OperationsViewModel extends AndroidViewModel {
     private String date = null;
     private final OperationAdapter adapter;
     private int EmpId;
+    private NavController navController;
+    Activity activity;
 
     public OperationsViewModel(@NonNull Application application) {
         super(application);
@@ -43,15 +49,25 @@ public class OperationsViewModel extends AndroidViewModel {
         this.date = date;
         repo.getDailyOperations(date);
     }
+    public void setNavController(NavController navController){
+        this.navController=navController;
+    }
+
 
 
     public void getDailyOperations() {
         repo.setDailyNotifications(new OperationsRepo.DailyNotifications() {
             @Override
-            public void data(ArrayList<OperationsModel> modelArrayList) {
-                liveData.setValue(modelArrayList);
-                adapter.setModelArrayList(modelArrayList);
-                adapter.notifyDataSetChanged();
+            public void data(Object obj, int Id) {
+                if(Id==1){
+                    liveData.setValue((ArrayList<OperationsModel>) obj);
+                    adapter.setModelArrayList((ArrayList<OperationsModel>) obj);
+                    adapter.notifyDataSetChanged();
+                }else if(Id==2){
+                    SaveOperationsResponse response= (SaveOperationsResponse) obj;
+                    CustomAlertDialog.getInstance().showDialog(response.getStrMessage(),"Response",activity, repo.context, 0);
+                   navController.navigate(R.id.fragmentPendingOperations);
+                }
             }
         });
     }

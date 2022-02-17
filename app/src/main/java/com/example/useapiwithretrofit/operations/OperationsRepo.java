@@ -1,10 +1,14 @@
 package com.example.useapiwithretrofit.operations;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.useapiwithretrofit.CustomAlertDialog;
 import com.example.useapiwithretrofit.DB.API_Service;
 import com.example.useapiwithretrofit.DB.RetrofitClientInstance;
 import com.example.useapiwithretrofit.Utils.SharedPreferencesHelper;
@@ -41,7 +45,7 @@ public class OperationsRepo {
             public void onResponse(@NonNull Call<ArrayList<OperationsModel>> call, Response<ArrayList<OperationsModel>> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        setDailyNotifications.data(response.body());
+                        setDailyNotifications.data(response.body(),1);
                     }
                 }
             }
@@ -56,6 +60,7 @@ public class OperationsRepo {
 
 
     public void saveOperations(ArrayList<SaveOperationsModel> arrayList) {
+
         API_Service service = RetrofitClientInstance.getClientInstance().create(API_Service.class);
         Call<SaveOperationsResponse> call = service.saveDailyOperationsList(token, arrayList);
         call.enqueue(new Callback<SaveOperationsResponse>() {
@@ -63,7 +68,6 @@ public class OperationsRepo {
             public void onResponse(@NonNull Call<SaveOperationsResponse> call, @NonNull Response<SaveOperationsResponse> response) {
                 if(response.isSuccessful()){
                     if(response.body()!=null){
-
                         Toast.makeText(context, response.body().getStrMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -78,7 +82,7 @@ public class OperationsRepo {
     }
 
     public interface DailyNotifications {
-        void data(ArrayList<OperationsModel> modelArrayList);
+        void data(Object obj,int Id);
     }
 
 }

@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:elevation="8dp"
-                android:gravity="left"
+                android:gravity="start"
                 android:padding="3dp"
                 android:text="@{operations.oprDesc}"
                 android:textColor="@color/custom_pink"
@@ -48,6 +48,7 @@
                 android:layout_marginTop="2dp"
                 android:hint="Remarks"
                 android:minHeight="48dp"
+                android:text="@={operations.remarks}"
                 android:visibility="@{operations.status?View.GONE:View.VISIBLE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +65,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvPerformedBy1" />
 
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_action"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,7 +74,8 @@
                 android:padding="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:checked="true" />
+                tools:checked="true"
+                />
 
             <View
                 android:id="@+id/view_vertical"

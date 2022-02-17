@@ -31,7 +31,7 @@ public class PendingOperationsRepo {
         this.context = context;
     }
 
-    public void getPendingOperations(int empId) {
+    public void getPendingOperations() {
         API_Service service = RetrofitClientInstance.getClientInstance().create(API_Service.class);
         SharedPreferencesHelper.getInstance(context).getToken();
         Call<ArrayList<PendingModel>> call = service.getPendingOperation(SharedPreferencesHelper.getInstance(context).getToken(),SharedPreferencesHelper.getInstance(context).getEmpId());

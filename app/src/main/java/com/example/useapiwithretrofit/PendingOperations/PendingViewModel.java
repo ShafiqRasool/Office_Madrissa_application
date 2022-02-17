@@ -20,7 +20,7 @@ public class PendingViewModel extends AndroidViewModel {
     public PendingViewModel(@NonNull @NotNull Application application) {
         super(application);
         repo=new PendingOperationsRepo(application);
-        repo.getPendingOperations(12);
+        repo.getPendingOperations();
         getOperations();
     }
 
