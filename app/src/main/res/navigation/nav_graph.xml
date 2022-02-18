@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/search_orders"
-        android:name="com.example.useapiwithretrofit.Report.Report"
+        android:name="com.example.useapiwithretrofit.report.ReportFragment"
         android:label="fragment_search_orders"
         tools:layout="@layout/fragment_search_orders" />
     <fragment
@@ -53,4 +53,8 @@
             app:launchSingleTop="false"
             app:popUpToInclusive="false" />
     </fragment>
+    <fragment
+        android:id="@+id/searchReportFragment"
+        android:name="com.example.useapiwithretrofit.report.SearchReportFragment"
+        android:label="SearchReportFragment" />
 </navigation>

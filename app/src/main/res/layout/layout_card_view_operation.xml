@@ -49,7 +49,7 @@
                 android:hint="Remarks"
                 android:minHeight="48dp"
                 android:text="@={operations.remarks}"
-                android:visibility="@{operations.status?View.GONE:View.VISIBLE}"
+                android:visibility="@{operations.status?View.GONE:View.VISIBLE,default=gone}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view_remark" />
@@ -69,12 +69,11 @@
                 android:id="@+id/switch_action"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
                 android:minHeight="48dp"
                 android:padding="5dp"
+                android:checked="@{operations.status?true:false}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:checked="true"
                 />
 
             <View

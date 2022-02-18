@@ -41,7 +41,6 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.view
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         OperationsModel model=modelArrayList.get(position);
-        model.setStatus(true);
         holder.bind(model);
         holder.mBinding.switchAction.setOnClickListener(new View.OnClickListener() {
             @Override

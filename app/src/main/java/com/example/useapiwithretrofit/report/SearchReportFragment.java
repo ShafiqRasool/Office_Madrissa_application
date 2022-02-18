@@ -1,4 +1,4 @@
-package com.example.useapiwithretrofit.Report;
+package com.example.useapiwithretrofit.report;
 
 import android.app.DatePickerDialog;
 import android.graphics.Color;
@@ -7,7 +7,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
@@ -20,7 +22,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.useapiwithretrofit.R;
-import com.example.useapiwithretrofit.databinding.FragmentSearchOrdersBinding;
+import com.example.useapiwithretrofit.databinding.FragmentSearchReportBinding;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -30,12 +32,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 
-public class Report extends Fragment {
+public class SearchReportFragment extends Fragment {
     String[] list_operations=new String[]{"Select operation","operation 1","operation 2","operation 3","operation 4","operation 5","operation 6"};
     String[] listStatus=new String[]{"Status","Accepted","Rejected"};
     String[] listPerformedBy=new String[]{"Performed By","person","department 2","department 3","department 4","department 5","department 6"};
     ArrayList<DepartmentWiseReportModel> departmentWiseReportModels;
-    FragmentSearchOrdersBinding mBinding;
+    FragmentSearchReportBinding mBinding;
+    ReportViewModel viewModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,21 +47,17 @@ public class Report extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mBinding=FragmentSearchOrdersBinding.inflate(getLayoutInflater());
+        mBinding= DataBindingUtil.inflate(inflater,R.layout.fragment_search_report,container,false);
         return mBinding.getRoot();
     }
 
     @Override
-    public void onViewCreated(@NonNull  View view, @Nullable  Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull  View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setupView();
-
-        mBinding.tvDateFrom.setOnClickListener(view1 -> getDate(mBinding.tvDateFrom));
-        mBinding.tvDateTo.setOnClickListener(view12 -> getDate(mBinding.tvDateTo));
-        initValues();
-        setupRecyclerViewItems();
+        viewModel= new ViewModelProvider(this).get(ReportViewModel.class);
 
     }
 
@@ -184,6 +183,3 @@ public class Report extends Fragment {
 
     }
 }
-
-
-

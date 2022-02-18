@@ -1,4 +1,4 @@
-package com.example.useapiwithretrofit.Report;
+package com.example.useapiwithretrofit.report;
 
 public class DepartmentWiseReportModel {
     private String department="";

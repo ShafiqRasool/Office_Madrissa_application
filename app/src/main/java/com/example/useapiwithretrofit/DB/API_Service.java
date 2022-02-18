@@ -8,6 +8,7 @@ import com.example.useapiwithretrofit.model.SaveOperationsResponse;
 import com.example.useapiwithretrofit.model.UserOperationsModel;
 import com.example.useapiwithretrofit.model.User_model;
 import com.example.useapiwithretrofit.model.UserTokenModel;
+import com.example.useapiwithretrofit.report.ReportModel;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface API_Service {
@@ -43,4 +45,17 @@ public interface API_Service {
 
     @POST("api/DailyOprActivities/Save_Kpi_Operations")
     Call<SaveOperationsResponse> saveDailyOperationsList(@Header ("Authorization") String auth, @Body ArrayList<SaveOperationsModel> arrayList);
+
+    @GET("api/DDL/GetDDLPriority")
+    Call<ArrayList<ReportModel>>  getPriorityList();
+
+    @GET("api/DDL/GetDDLDepartment")
+    Call<ArrayList<ReportModel>>  getDepartments(@Path("Company_Id") int companyId,@Path("Country_Id") int countryId);
+
+    @GET("api/DDL/FillLocation")
+    Call<ArrayList<ReportModel>> getFillLocations(@Path("Company_Id") int companyId);
+
+    @GET("api/DDL/GetDDLEmpProfile")
+    Call<ArrayList<ReportModel>>  getEmployees(@Path("Company_Id") int companyId,@Path("Country_Id") int countryId,@Path("Location_Id") int LocationId);
+
 }

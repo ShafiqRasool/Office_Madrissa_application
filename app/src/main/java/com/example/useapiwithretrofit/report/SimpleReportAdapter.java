@@ -1,4 +1,4 @@
-package com.example.useapiwithretrofit.Report;
+package com.example.useapiwithretrofit.report;
 
 import android.content.Context;
 import android.view.LayoutInflater;

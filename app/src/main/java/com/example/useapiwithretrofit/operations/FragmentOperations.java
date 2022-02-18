@@ -56,10 +56,8 @@ public class FragmentOperations extends Fragment {
 
         date=FragmentOperationsArgs.fromBundle(getArguments()).getDate().replace("-","");
         viewModel=new ViewModelProvider(this).get(OperationsViewModel.class);
-        viewModel.setDate(date);
+        viewModel.setInitData(date,requireActivity(),requireContext());
         viewModel.setNavController(navController);
-
-
         mBinding.setOperationsViewModel(viewModel);
 
     }

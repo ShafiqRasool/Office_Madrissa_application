@@ -17,4 +17,5 @@ public interface NotificationDao {
     void post(ArrayList<NotificationModel> notificationsList);
     @Query("SELECT * FROM notifications ORDER BY Id ASC")
     LiveData<List<NotificationModel>> getSaveNotifications();
+
 }

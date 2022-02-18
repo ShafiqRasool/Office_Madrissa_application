@@ -1,7 +1,9 @@
 package com.example.useapiwithretrofit.PendingOperations;
 
 import android.content.Context;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 
 import com.example.useapiwithretrofit.DB.API_Service;
@@ -18,6 +20,7 @@ import retrofit2.Response;
 
 public class PendingOperationsRepo {
     dataFound dataFound;
+
     public void setDataFound(dataFound dataFound) {
         this.dataFound = dataFound;
     }
@@ -27,6 +30,7 @@ public class PendingOperationsRepo {
     }
 
     Context context;
+
     public PendingOperationsRepo(Context context) {
         this.context = context;
     }
@@ -34,10 +38,10 @@ public class PendingOperationsRepo {
     public void getPendingOperations() {
         API_Service service = RetrofitClientInstance.getClientInstance().create(API_Service.class);
         SharedPreferencesHelper.getInstance(context).getToken();
-        Call<ArrayList<PendingModel>> call = service.getPendingOperation(SharedPreferencesHelper.getInstance(context).getToken(),SharedPreferencesHelper.getInstance(context).getEmpId());
+        Call<ArrayList<PendingModel>> call = service.getPendingOperation(SharedPreferencesHelper.getInstance(context.getApplicationContext()).getToken(), SharedPreferencesHelper.getInstance(context.getApplicationContext()).getEmpId());
         call.enqueue(new Callback<ArrayList<PendingModel>>() {
             @Override
-            public void onResponse(Call<ArrayList<PendingModel>> call, Response<ArrayList<PendingModel>> response) {
+            public void onResponse(@NonNull Call<ArrayList<PendingModel>> call, @NonNull Response<ArrayList<PendingModel>> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         dataFound.setData(response.body());
@@ -46,23 +50,11 @@ public class PendingOperationsRepo {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<PendingModel>> call, Throwable t) {
-
+            public void onFailure(@NonNull Call<ArrayList<PendingModel>> call, @NonNull Throwable t) {
+                Toast.makeText(context, "Failed to Get data", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
-        public  String getToken(){
-            android.content.SharedPreferences preferences=context.getSharedPreferences(String.valueOf(R.string.file_name), Context.MODE_PRIVATE);
-            return preferences.getString(String.valueOf(R.string.userToken),"null");
-        }
-
-        public  int getEmpId() {
-            android.content.SharedPreferences preferences = context.getSharedPreferences(String.valueOf(R.string.file_name), Context.MODE_PRIVATE);
-            return preferences.getInt(String.valueOf(R.string.empId), 0);
-        }
-
-
 
 
 }
