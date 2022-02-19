@@ -13,6 +13,7 @@ import androidx.navigation.ui.NavigationUI;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.useapiwithretrofit.DB.API_Service;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mainBinding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mainBinding.getRoot());
+
         setUpNavigation();
       //  AppBarConfiguration appBarConfiguration=AppBarConfiguration(nav_controller.getGraph(),mainBinding.);
         nav_controller.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
@@ -48,40 +50,37 @@ public class MainActivity extends AppCompatActivity {
         assert navHostFragment != null;
         nav_controller=navHostFragment.getNavController();
 
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(nav_controller.getGraph())
-                .setOpenableLayout(mainBinding.drawerLayout)
-                .build();
+//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(nav_controller.getGraph())
+//                .setOpenableLayout(mainBinding.drawerLayout)
+//                .build();
         NavigationUI.setupWithNavController(mainBinding.navigationView, nav_controller);
         NavigationUI.setupWithNavController(mainBinding.bottomNavigation,nav_controller);
-
-//        mainBinding.navigationView.getMenu().getItem(R.id.login_fragment).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem menuItem) {
-//                SharedPreferences.Editor preference= (SharedPreferences.Editor) getApplicationContext().getSharedPreferences(String.valueOf(R.string.file_name), Context.MODE_PRIVATE);
-//                preference.putBoolean(String.valueOf(R.string.loginStatus),false);
-//                return true;
-//            }
-//        });
 
     }
 
     @Override
     public void onBackPressed() {
-        int current_des_id=nav_controller.getCurrentDestination().getId();
-        if(current_des_id==R.id.homeFragment){
-            finish();
-        }else if(mainBinding.drawerLayout.isDrawerOpen(GravityCompat.START)){
-            mainBinding.drawerLayout.closeDrawers();
-        }else if(current_des_id==R.id.search_orders){
-            nav_controller.navigate(R.id.homeFragment);
+//        int current_des_id=nav_controller.getCurrentDestination().getId();
+//        if(current_des_id==R.id.homeFragment){
+//            finish();
+//        }else if(mainBinding.drawerLayout.isDrawerOpen(GravityCompat.START)){
+//            mainBinding.drawerLayout.closeDrawers();
+//        }else if(current_des_id==R.id.search_orders){
+//            nav_controller.navigate(R.id.homeFragment);
+//
+//        }else if(current_des_id==R.id.notification2){
+//            nav_controller.navigate(R.id.homeFragment);
+//
+//        }else if(current_des_id==R.id.about_us){
+//            nav_controller.navigate(R.id.homeFragment);
+//        }else {
+       super.onBackPressed();
+      // }
+    }
 
-        }else if(current_des_id==R.id.notification2){
-            nav_controller.navigate(R.id.homeFragment);
-
-        }else if(current_des_id==R.id.about_us){
-            nav_controller.navigate(R.id.homeFragment);
-        }else {
-        super.onBackPressed();
-        }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Log.d("sad","asdf");
+        return super.onOptionsItemSelected(item);
     }
 }

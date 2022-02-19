@@ -26,8 +26,6 @@ public class NotificationViewModel extends AndroidViewModel {
         getNotifications();
     }
 
-
-
     public void getNotifications() {
         SharedPreferences preferences = getReadSharedPreferece();
         int empId = preferences.getInt(String.valueOf(R.string.empId), 0);

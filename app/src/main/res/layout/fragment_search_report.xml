@@ -102,7 +102,6 @@
                     style="@style/Widget.AppCompat.Spinner.Underlined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:setCustomSpinnerAdapter="@{viewModel.departmentLiveList}"
                     />
 
                 <View
@@ -129,13 +128,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/custom_pink"
-                    android:setCustomSpinnerAdapter="@{viewModel.priorityLiveList}"
                     />
 
-                <Spinner
+                <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/spinner_operations"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    />
 
                 <View
                     android:layout_width="match_parent"
@@ -165,7 +164,6 @@
                     android:id="@+id/spinner_performBy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:setCustomSpinnerAdapter="@{viewModel.profileLiveList}"
                     />
 
                 <View

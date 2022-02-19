@@ -19,7 +19,7 @@ import kotlin.jvm.JvmStatic;
 public class CustomBindingAdapter {
     @JvmStatic
     @BindingAdapter("app:SetCustomAdapter")
-    public static void SetCustomAdapter(RecyclerView recyclerView,RecyclerView.Adapter<?> adapter){
+    public static void setCustomAdapter(RecyclerView recyclerView,RecyclerView.Adapter<?> adapter){
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(recyclerView.getContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);

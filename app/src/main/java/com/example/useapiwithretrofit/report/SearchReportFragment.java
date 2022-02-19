@@ -9,6 +9,9 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 
@@ -30,21 +33,16 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 
 public class SearchReportFragment extends Fragment {
-    String[] list_operations=new String[]{"Select operation","operation 1","operation 2","operation 3","operation 4","operation 5","operation 6"};
-    String[] listStatus=new String[]{"Status","Accepted","Rejected"};
-    String[] listPerformedBy=new String[]{"Performed By","person","department 2","department 3","department 4","department 5","department 6"};
-    ArrayList<DepartmentWiseReportModel> departmentWiseReportModels;
+    private final List<String> priorityList= new ArrayList<>();
+    private final List<String> profileList=new ArrayList<>();
+    private final List<String> departmentList=new ArrayList<>();
+    private final List<String> locationList=new ArrayList<>();
     FragmentSearchReportBinding mBinding;
     ReportViewModel viewModel;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -56,24 +54,64 @@ public class SearchReportFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull  View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupView();
         viewModel= new ViewModelProvider(this).get(ReportViewModel.class);
+        viewModel.setData(getActivity(),requireContext());
+        initValues();
+        mBinding.setViewModel(viewModel);
+
+
+
+
 
     }
 
     private void initValues() {
-        departmentWiseReportModels=new ArrayList<>();
-        for(int i=0;i<=20;i=i+2){
-            DepartmentWiseReportModel model=new DepartmentWiseReportModel();
-            model.setDepartment("department"+i);
-            model.setAccepted(i);
-            model.setRejected(i);
-            model.setTotal(i);
-            departmentWiseReportModels.add(model);
-        }
-        createTable(departmentWiseReportModels);
-        setupBarChart(departmentWiseReportModels);
+        viewModel.getProfileLiveList().observe((LifecycleOwner) this, new Observer<ArrayList<ReportModel>>() {
+            @Override
+            public void onChanged(ArrayList<ReportModel> reportModels) {
 
+                if(reportModels!=null)
+                {
+                    for(ReportModel model : reportModels)
+                    {
+                        priorityList.add(model.getText());
+                    }
+                    ArrayAdapter<String> adapter=new ArrayAdapter<>(requireContext(),R.layout.support_simple_spinner_dropdown_item,priorityList);
+                    mBinding.spinnerOperations.setAdapter(adapter);
+                }
+            }
+        });
+
+        viewModel.getProfileLiveList().observe((LifecycleOwner) this, new Observer<ArrayList<ReportModel>>() {
+            @Override
+            public void onChanged(ArrayList<ReportModel> reportModels) {
+                if(reportModels!=null){
+                    for(ReportModel model:reportModels){
+                        profileList.add(model.getText());
+                    }
+                }
+            }
+        });
+        viewModel.getDepartmentLiveList().observe((LifecycleOwner) this, new Observer<ArrayList<ReportModel>>() {
+            @Override
+            public void onChanged(ArrayList<ReportModel> reportModels) {
+                if(reportModels!=null){
+                    for(ReportModel model:reportModels){
+                        departmentList.add(model.getText());
+                    }
+                }
+            }
+        });
+        viewModel.getLocationLiveList().observe((LifecycleOwner) this, new Observer<ArrayList<ReportModel>>() {
+            @Override
+            public void onChanged(ArrayList<ReportModel> reportModels) {
+                if(reportModels!=null){
+                    for(ReportModel model:reportModels){
+                        locationList.add(model.getText());
+                    }
+                }
+            }
+        });
     }
 
     private void setupRecyclerViewItems() {
@@ -95,31 +133,8 @@ public class SearchReportFragment extends Fragment {
 
     }
 
-    void setupView( ){
-        ArrayAdapter<String> operationsAdapter=new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1,list_operations);
-        ArrayAdapter<String> statusAdapter=new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1,listStatus);
-        ArrayAdapter<String> performedByAdapter=new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1,listPerformedBy);
 
-        mBinding.spinnerOperations.setAdapter(operationsAdapter);
-        mBinding.spinnerStatus.setAdapter(statusAdapter);
-        mBinding.spinnerPerformBy.setAdapter(performedByAdapter);
-    }
-    private void getDate(TextView textView) {
-        Calendar calendar = Calendar.getInstance();
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        int year = calendar.get(Calendar.YEAR);
-        DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(), new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                StringBuilder builder = new StringBuilder();
-                builder.append(i).append("/").append(i1 + 1).append("/").append(i2);
-                textView.setText(builder);
 
-            }
-        }, year, month, day);
-        datePickerDialog.show();
-    }
 
     void createTable(ArrayList<DepartmentWiseReportModel> arrayList){
         int size=arrayList.size();

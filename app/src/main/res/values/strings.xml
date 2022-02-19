@@ -14,4 +14,10 @@
     <string name="loginStatus">loginStatus</string>
     <string name="empId">empId</string>
     <string name="pending">Pending</string>
+    <string name="notifiaction">Notifiaction</string>
+    <string name="report">Report</string>
+    <string name="home">Home</string>
+    <string name="sign_out">Sign out</string>
+    <string name="operation">Operation</string>
+    <string name="about">About</string>
 </resources>

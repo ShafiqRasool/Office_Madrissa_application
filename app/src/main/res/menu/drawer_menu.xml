@@ -2,23 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
-        android:title="Home"
+        android:title="@string/home"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_home_24"/>
     <item
-        android:id="@+id/search_orders"
-        android:title="Report"
+        android:id="@+id/searchReportFragment"
+        android:title="@string/report"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_file_copy_24"/>
     <item
         android:id="@+id/fragmentPendingOperations"
-        android:title="Operation"
+        android:title="@string/operation"
         android:icon="@drawable/ic_target"
         android:enabled="true"
         />
     <item
         android:id="@+id/notification2"
-        android:title="Notifiaction"
+        android:title="@string/notifiaction"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_notifications_24"/>
     <group
@@ -26,13 +26,13 @@
         >
     <item
         android:id="@+id/login_fragment"
-        android:title="Sign out"
+        android:title="@string/sign_out"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_reply_24"
         />
     <item
         android:id="@+id/about_us"
-        android:title="About"
+        android:title="@string/about"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_info_24"/>
     </group>

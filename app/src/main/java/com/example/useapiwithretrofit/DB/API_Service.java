@@ -47,15 +47,15 @@ public interface API_Service {
     Call<SaveOperationsResponse> saveDailyOperationsList(@Header ("Authorization") String auth, @Body ArrayList<SaveOperationsModel> arrayList);
 
     @GET("api/DDL/GetDDLPriority")
-    Call<ArrayList<ReportModel>>  getPriorityList();
+    Call<ArrayList<ReportModel>>  getPriorityList(@Header ("Authorization") String auth);
 
     @GET("api/DDL/GetDDLDepartment")
-    Call<ArrayList<ReportModel>>  getDepartments(@Path("Company_Id") int companyId,@Path("Country_Id") int countryId);
+    Call<ArrayList<ReportModel>>  getDepartments(@Header ("Authorization") String auth,@Query("Company_Id") int companyId,@Query("Country_Id") int countryId);
 
     @GET("api/DDL/FillLocation")
-    Call<ArrayList<ReportModel>> getFillLocations(@Path("Company_Id") int companyId);
+    Call<ArrayList<ReportModel>> getFillLocations(@Header ("Authorization") String auth,@Query("Company_Id") int companyId);
 
     @GET("api/DDL/GetDDLEmpProfile")
-    Call<ArrayList<ReportModel>>  getEmployees(@Path("Company_Id") int companyId,@Path("Country_Id") int countryId,@Path("Location_Id") int LocationId);
+    Call<ArrayList<ReportModel>>  getEmployees(@Header ("Authorization") String auth,@Query("Company_Id") int companyId,@Query("Country_Id") int countryId,@Query("Location_Id") int LocationId);
 
 }
