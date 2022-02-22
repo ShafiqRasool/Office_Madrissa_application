@@ -35,7 +35,7 @@ public class OperationsViewModel extends AndroidViewModel {
         repo = new OperationsRepo(application);
         adapter = new OperationAdapter();
         getDailyOperations();
-       EmpId=SharedPreferencesHelper.getInstance(repo.context).getEmpId();
+        EmpId = SharedPreferencesHelper.getInstance(repo.context).getEmpId();
     }
 
     public ObservableField<Boolean> getVisibility() {
@@ -46,31 +46,31 @@ public class OperationsViewModel extends AndroidViewModel {
         Visibility = visibility;
     }
 
-    public void setInitData(String Date, Activity activity, Context context){
+    public void setInitData(String Date, Activity activity, Context context) {
         this.date = Date;
         repo.getDailyOperations(date);
-        this.activity=activity;
-        this.context=context;
+        this.activity = activity;
+        this.context = context;
 
     }
-    public void setNavController(NavController navController){
-        this.navController=navController;
-    }
 
+    public void setNavController(NavController navController) {
+        this.navController = navController;
+    }
 
 
     public void getDailyOperations() {
         repo.setDailyNotifications(new OperationsRepo.DailyNotifications() {
             @Override
             public void data(Object obj, int Id) {
-                if(Id==1){
+                if (Id == 1) {
                     liveData.setValue((ArrayList<OperationsModel>) obj);
                     adapter.setModelArrayList((ArrayList<OperationsModel>) obj);
                     adapter.notifyDataSetChanged();
-                }else if(Id==2){
-                    SaveOperationsResponse response= (SaveOperationsResponse) obj;
-                    CustomAlertDialog.getInstance().showDialog(response.getStrMessage(),"Response",activity, context);
-                   navController.navigate(R.id.fragmentPendingOperations);
+                } else if (Id == 2) {
+                    SaveOperationsResponse response = (SaveOperationsResponse) obj;
+                    CustomAlertDialog.getInstance().showDialog(response.getStrMessage(), "Response", activity, context);
+                    navController.navigate(R.id.fragmentPendingOperations);
                 }
             }
         });
@@ -82,16 +82,17 @@ public class OperationsViewModel extends AndroidViewModel {
 
 
     public void saveOperations() {
-       repo.saveOperations(changeListtoSaveOperationModel(adapter.modelArrayList,false));
+        repo.saveOperations(changeListtoSaveOperationModel(adapter.modelArrayList, false));
 
     }
-    public ArrayList<SaveOperationsModel> changeListtoSaveOperationModel(ArrayList<OperationsModel> arrayList,boolean setsend){
-       ArrayList<SaveOperationsModel> saveOperationsModelArrayList=new ArrayList<>();
+
+    public ArrayList<SaveOperationsModel> changeListtoSaveOperationModel(ArrayList<OperationsModel> arrayList, boolean setsend) {
+        ArrayList<SaveOperationsModel> saveOperationsModelArrayList = new ArrayList<>();
         for (int x = 0; x < arrayList.size(); x++) {
 
             OperationsModel model = arrayList.get(x);
 
-            SaveOperationsModel model1=new SaveOperationsModel();
+            SaveOperationsModel model1 = new SaveOperationsModel();
 
             model1.setRemarks(model.getRemarks());
             model1.setOperationsTransDate(date);
@@ -109,7 +110,7 @@ public class OperationsViewModel extends AndroidViewModel {
     }
 
     public void SendOperations() {
-        repo.saveOperations(changeListtoSaveOperationModel(adapter.getModelArrayList(),true));
+        repo.saveOperations(changeListtoSaveOperationModel(adapter.getModelArrayList(), true));
 
     }
 

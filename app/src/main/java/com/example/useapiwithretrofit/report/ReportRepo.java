@@ -1,8 +1,6 @@
 package com.example.useapiwithretrofit.report;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-
 import androidx.annotation.NonNull;
 
 import com.example.useapiwithretrofit.DB.API_Service;
@@ -10,7 +8,6 @@ import com.example.useapiwithretrofit.DB.RetrofitClientInstance;
 import com.example.useapiwithretrofit.Utils.SharedPreferencesHelper;
 
 import java.util.ArrayList;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -75,7 +72,7 @@ public class ReportRepo {
             public void onResponse(@NonNull Call<ArrayList<ReportModel>> call, @NonNull Response<ArrayList<ReportModel>> response) {
                 if(response.isSuccessful()){
                     if(response.body()!=null){
-                        onGetList.Data(response.body(),2);
+                        onGetList.Data(response.body(),3);
                     }
                 }
             }

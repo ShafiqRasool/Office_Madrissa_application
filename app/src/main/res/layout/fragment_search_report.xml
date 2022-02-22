@@ -4,10 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable
-            name="viewModel"
-            type="com.example.useapiwithretrofit.report.ReportViewModel"
-            />
+        <variable name="viewModel" type="com.example.useapiwithretrofit.report.ReportViewModel" />
+
     </data>
 
     <ScrollView
@@ -21,6 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:paddingBottom="10dp"
             >
 
             <TextView
@@ -46,265 +45,166 @@
                 android:padding="5dp"
                 android:weightSum="2"
                 android:elevation="5dp"
-                app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-                app:layout_constraintStart_toEndOf="@+id/linearLayout"
                 app:layout_constraintTop_toBottomOf="@+id/textView4">
 
                 <TextView
                     android:id="@+id/tv_date_from"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="From date"
+                    android:text='@{viewModel.formDate!=null?viewModel.formDate:"From Date"}'
                     android:textColor="@color/custom_pink"
                     android:textSize="18sp"
                     android:layout_weight="1"
                     android:elevation="5dp"
                     android:drawablePadding="10dp"
-                    android:drawableTint="@color/custom_pink"
-                    android:drawableStart="@drawable/ic_baseline_calendar_today_24"
-                    />
+                    app:drawableTint="@color/custom_pink"
+                    app:drawableStartCompat="@drawable/ic_baseline_calendar_today_24" />
 
                 <TextView
                     android:id="@+id/tv_Date_to"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="To date"
+                    android:text='@{viewModel.toDate!=null?viewModel.toDate:"To Date"}'
                     android:textColor="@color/custom_pink"
                     android:textSize="18sp"
                     android:layout_weight="1"
                     android:elevation="5dp"
                     android:drawablePadding="10dp"
-                    android:drawableTint="@color/custom_pink"
-                    android:drawableStart="@drawable/ic_baseline_calendar_today_24"
-                    />
+                    app:drawableTint="@color/custom_pink"
+                    app:drawableStartCompat="@drawable/ic_baseline_calendar_today_24" />
             </LinearLayout>
 
-
-            <LinearLayout
-                android:id="@+id/linearLayout"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/spinnerProfile_Layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginStart="12dp"
-                android:elevation="5dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="4dp"
+                android:hint="Performed By"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/custom_pink" />
-
-                <Spinner
-                    android:id="@+id/spinner_status"
-                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                <AutoCompleteTextView
+                    android:id="@+id/spinnerProfile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textSize="14sp"
+                    setCustomSpinnerAdapter="@{viewModel.adapterProfile}"
+                    android:text="@={viewModel.selectedProfile}"
                     />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/custom_pink" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout2"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/spinnerPriority_Layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginStart="12dp"
-                android:elevation="5dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="4dp"
+                android:hint="Priority"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+                app:layout_constraintTop_toBottomOf="@+id/spinnerStatus_Layout">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/custom_pink"
-                    />
-
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/spinner_operations"
+                <AutoCompleteTextView
+                    android:id="@+id/spinnerPriority"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textSize="14sp"
+                    android:text="@={viewModel.selectedPriority}"
+                    setCustomSpinnerAdapter="@{viewModel.adapterPriority}"
                     />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/custom_pink" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout4"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/spinnerDepartment_Layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="12dp"
-                android:orientation="vertical"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="4dp"
+                android:hint="Department"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+                app:layout_constraintTop_toBottomOf="@+id/spinnerLocation_Layout">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/custom_pink" />
-
-                <Spinner
-                    android:id="@+id/spinner_performBy"
+                <AutoCompleteTextView
+                    android:id="@+id/spinnerDepartment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textSize="14sp"
+                    android:text="@={viewModel.selectedDepartment}"
+                    setCustomSpinnerAdapter="@{viewModel.adapterDepartment}"
                     />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <View
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/spinnerLocation_Layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="4dp"
+                android:hint="Section "
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerProfile_Layout">
+
+                <AutoCompleteTextView
+                    android:id="@+id/spinnerLocation"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/custom_pink" />
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textSize="14sp"
+                    android:text="@={viewModel.selectedLocation}"
+                    setCustomSpinnerAdapter="@{viewModel.adapterLocation}"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/spinnerStatus_Layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="4dp"
+                android:hint="Status"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerDepartment_Layout">
+
+                <AutoCompleteTextView
+                    android:id="@+id/spinnerStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textSize="14sp"
+                    android:text="@={viewModel.selectedStatus}"
+                    setCustomSpinnerAdapter="@{viewModel.adapterStatus}"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Search"
+                android:layout_marginTop="30dp"
+                android:text="Select Filter"
                 android:textAllCaps="false"
                 app:cornerRadius="6dp"
+                android:textSize="18sp"
+                android:padding="5dp"
                 app:elevation="5dp"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/custom_gray"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button" />
-
-            <LinearLayout
-                android:id="@+id/linear_layout_report_result"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="10"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@+id/view"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                >
-
-
-                <TableLayout
-                    android:id="@+id/table_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:divider="@drawable/table_element_background"
-                    android:dividerPadding="10dp"
-                    android:layout_weight="5"
-                    android:layout_marginTop="15dp"
-                    android:elevation="10dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TableRow
-                        android:id="@+id/table_row1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/table_element_background"
-                            android:paddingLeft="2dp"
-                            android:paddingTop="10dp"
-                            android:paddingRight="2dp"
-                            android:paddingBottom="2dp"
-                            android:text="@string/department"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/table_element_background"
-                            android:paddingLeft="2dp"
-                            android:paddingTop="10dp"
-                            android:paddingRight="2dp"
-                            android:paddingBottom="2dp"
-                            android:text="@string/total"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/table_element_background"
-                            android:paddingLeft="2dp"
-                            android:paddingTop="10dp"
-                            android:paddingRight="2dp"
-                            android:paddingBottom="2dp"
-                            android:text="@string/accepted"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/table_element_background"
-                            android:gravity="center"
-                            android:paddingLeft="2dp"
-                            android:paddingTop="10dp"
-                            android:paddingRight="2dp"
-                            android:paddingBottom="2dp"
-                            android:text="@string/rejected"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                    </TableRow>
-                </TableLayout>
-
-                <com.github.mikephil.charting.charts.BarChart
-                    android:id="@+id/barChart"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="5"
-                    android:minHeight="500dp"
-                    android:elevation="10dp"
-                    android:layout_marginTop="15dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/table_layout" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView_order"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginHorizontal="10dp"
-                android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@+id/view"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginHorizontal="15dp"
+                android:onClick="@{()->viewModel.TransmitData()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:listitem="@layout/card_view_orders" />
+                app:layout_constraintTop_toBottomOf="@+id/spinnerPriority_Layout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

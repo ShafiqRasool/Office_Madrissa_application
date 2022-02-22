@@ -14,12 +14,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class PendingViewModel extends AndroidViewModel {
-    MutableLiveData<ArrayList<PendingModel>> livePending=new MutableLiveData<>();
+    MutableLiveData<ArrayList<PendingModel>> livePending = new MutableLiveData<>();
     PendingOperationsRepo repo;
 
     public PendingViewModel(@NonNull @NotNull Application application) {
         super(application);
-        repo=new PendingOperationsRepo(application);
+        repo = new PendingOperationsRepo(application);
         repo.getPendingOperations();
         getOperations();
     }
@@ -32,7 +32,7 @@ public class PendingViewModel extends AndroidViewModel {
             @Override
             public void setData(ArrayList<PendingModel> modelArrayList) {
                 livePending.setValue(modelArrayList);
-               // dialog.dismiss();
+                // dialog.dismiss();
             }
         });
     }

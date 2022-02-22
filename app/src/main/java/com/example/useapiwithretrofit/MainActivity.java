@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import com.example.useapiwithretrofit.DB.API_Service;
 import com.example.useapiwithretrofit.DB.RetrofitClientInstance;
+import com.example.useapiwithretrofit.Utils.SharedPreferencesHelper;
 import com.example.useapiwithretrofit.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -39,8 +40,7 @@ public class MainActivity extends AppCompatActivity {
                                              @NonNull  NavDestination destination,
                                              @Nullable  Bundle arguments) {
 
-            }
-        });
+            }});
         }
 
 

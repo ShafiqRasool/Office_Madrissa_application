@@ -1,48 +1,50 @@
 package com.example.useapiwithretrofit.operations;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
 public class SaveOperationsResponse implements Parcelable {
 
 
-        @SerializedName("RcKey")
-        @Expose
-        private Long rcKey;
-        @SerializedName("StrMessage")
-        @Expose
-        private String strMessage;
-        @SerializedName("NotifyMessage")
-        @Expose
-        private String notifyMessage;
-        @SerializedName("CrudNo")
-        @Expose
-        private Long crudNo;
-        @SerializedName("Status")
-        @Expose
-        private Long status;
-        @SerializedName("ReturnId")
-        @Expose
-        private Float returnId;
-        @SerializedName("Code")
-        @Expose
-        private String code;
-        @SerializedName("ID")
-        @Expose
-        private Long id;
-        @SerializedName("Email_Address")
-        @Expose
-        private String emailAddress;
-        @SerializedName("Email_Password")
-        @Expose
-        private String emailPassword;
-        @SerializedName("Email_Host")
-        @Expose
-        private String emailHost;
-        @SerializedName("User_Name")
-        @Expose
-        private String userName;
+    @SerializedName("RcKey")
+    @Expose
+    private Long rcKey;
+    @SerializedName("StrMessage")
+    @Expose
+    private String strMessage;
+    @SerializedName("NotifyMessage")
+    @Expose
+    private String notifyMessage;
+    @SerializedName("CrudNo")
+    @Expose
+    private Long crudNo;
+    @SerializedName("Status")
+    @Expose
+    private Long status;
+    @SerializedName("ReturnId")
+    @Expose
+    private Float returnId;
+    @SerializedName("Code")
+    @Expose
+    private String code;
+    @SerializedName("ID")
+    @Expose
+    private Long id;
+    @SerializedName("Email_Address")
+    @Expose
+    private String emailAddress;
+    @SerializedName("Email_Password")
+    @Expose
+    private String emailPassword;
+    @SerializedName("Email_Host")
+    @Expose
+    private String emailHost;
+    @SerializedName("User_Name")
+    @Expose
+    private String userName;
 
     protected SaveOperationsResponse(Parcel in) {
         if (in.readByte() == 0) {

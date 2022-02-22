@@ -21,7 +21,10 @@
         tools:layout="@layout/fragment_login_fragment" >
         <action
             android:id="@+id/action_login_fragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/login_fragment"
+            app:popUpToInclusive="true"
+            />
     </fragment>
     <fragment
         android:id="@+id/search_orders"
@@ -56,5 +59,18 @@
     <fragment
         android:id="@+id/searchReportFragment"
         android:name="com.example.useapiwithretrofit.report.SearchReportFragment"
-        android:label="SearchReportFragment" />
+        android:label="SearchReportFragment" >
+        <action
+            android:id="@+id/action_searchReportFragment_to_reportTypeFragment"
+            app:destination="@id/reportTypeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reportTypeFragment"
+        android:name="com.example.useapiwithretrofit.report.ReportTypeSelection.ReportTypeFragment"
+        android:label="ReportTypeFragment" >
+        <argument
+            android:name="ReportSelection"
+            app:argType="com.example.useapiwithretrofit.report.models.ReportSelectionModel"
+            />
+    </fragment>
 </navigation>

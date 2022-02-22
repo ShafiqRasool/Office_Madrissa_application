@@ -17,35 +17,35 @@ import java.util.ArrayList;
 
 
 public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.viewHolder> {
-    public  ArrayList<OperationsModel> modelArrayList=new ArrayList<>();
+    public ArrayList<OperationsModel> modelArrayList = new ArrayList<>();
     private LayoutInflater inflater;
 
-    public  void setModelArrayList(ArrayList<OperationsModel> modelArrayList) {
+    public void setModelArrayList(ArrayList<OperationsModel> modelArrayList) {
         this.modelArrayList = modelArrayList;
     }
 
-    public  ArrayList<OperationsModel> getModelArrayList() {
+    public ArrayList<OperationsModel> getModelArrayList() {
         return modelArrayList;
     }
 
     @NonNull
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if(inflater==null){
-            inflater=LayoutInflater.from(parent.getContext());
+        if (inflater == null) {
+            inflater = LayoutInflater.from(parent.getContext());
         }
-        LayoutCardViewOperationBinding mBinding= DataBindingUtil.inflate(inflater, R.layout.layout_card_view_operation,parent,false);
+        LayoutCardViewOperationBinding mBinding = DataBindingUtil.inflate(inflater, R.layout.layout_card_view_operation, parent, false);
         return new viewHolder(mBinding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
-        OperationsModel model=modelArrayList.get(position);
+        OperationsModel model = modelArrayList.get(position);
         holder.bind(model);
         holder.mBinding.switchAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    model.setStatus(holder.mBinding.switchAction.isChecked());
+                model.setStatus(holder.mBinding.switchAction.isChecked());
             }
         });
     }
@@ -56,12 +56,14 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.view
     }
 
     public static class viewHolder extends RecyclerView.ViewHolder {
-       LayoutCardViewOperationBinding mBinding;
-        public viewHolder(@NonNull LayoutCardViewOperationBinding binding ) {
+        LayoutCardViewOperationBinding mBinding;
+
+        public viewHolder(@NonNull LayoutCardViewOperationBinding binding) {
             super(binding.getRoot());
-            mBinding=binding;
+            mBinding = binding;
         }
-        public void bind(OperationsModel obj){
+
+        public void bind(OperationsModel obj) {
             mBinding.setOperations(obj);
             mBinding.executePendingBindings();
         }

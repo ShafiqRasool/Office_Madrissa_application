@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.NavOptions;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -105,7 +107,7 @@ public class login_fragment extends Fragment  {
                         getUserData(email,password,response.body());
 
                         getSharedPreferencesEditor().putBoolean(String.valueOf(R.string.loginStatus),true).apply();
-                        navController.navigate(R.id.action_login_fragment_to_homeFragment);
+
                     }
                 }else{
                     Toast.makeText(requireContext(), "Wrong Email or Password", Toast.LENGTH_SHORT).show();
@@ -141,6 +143,7 @@ public class login_fragment extends Fragment  {
                    editor.putBoolean(String.valueOf(R.string.loginStatus),true);
                    editor.putInt(String.valueOf(R.string.empId),user_model.getId());
                    editor.apply();
+                   navController.navigate(R.id.action_login_fragment_to_homeFragment);
 
                }
            }

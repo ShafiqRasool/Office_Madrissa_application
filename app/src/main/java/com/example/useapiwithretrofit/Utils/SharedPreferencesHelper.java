@@ -24,6 +24,9 @@ public class SharedPreferencesHelper {
         }
         return Instance;
     }
+    public SharedPreferences.Editor edit(){
+       return preferences.edit();
+    }
 
 
     public String getToken(){
@@ -32,5 +35,8 @@ public class SharedPreferencesHelper {
 
     public int getEmpId(){
         return preferences.getInt(String.valueOf(R.string.empId),0);
+    }
+    public boolean GetLoginState(){
+        return preferences.getBoolean(String.valueOf(R.string.loginStatus),false);
     }
 }

@@ -1,8 +1,12 @@
 package com.example.useapiwithretrofit.Utils;
 
+import android.app.DatePickerDialog;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.DatePicker;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.databinding.BindingAdapter;
@@ -12,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.useapiwithretrofit.report.ReportModel;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import kotlin.jvm.JvmStatic;
@@ -38,17 +43,11 @@ public class CustomBindingAdapter {
             switchCompat.setChecked(false);
         }
     }
-    @BindingAdapter("android:setCustomSpinnerAdapter")
-    public static void setCustomSpinnerAdapter(Spinner spinner, ArrayList<ReportModel> models){
-        List<String> list =null;
-        if(models!=null) {
-            for (int x = 0; x < models.size(); x++) {
-                list.add(models.get(x).getText());
-            }
-        }
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(spinner.getContext(), android.R.layout.simple_spinner_dropdown_item, list);
-            spinner.setAdapter(adapter);
+    @BindingAdapter("setCustomSpinnerAdapter")
+    public static void setCustomSpinnerAdapter(AutoCompleteTextView spinner, ArrayAdapter<?> adapter){
+       spinner.setAdapter(adapter);
 
     }
+
 
 }
