@@ -9,6 +9,7 @@ import com.example.useapiwithretrofit.model.UserOperationsModel;
 import com.example.useapiwithretrofit.model.User_model;
 import com.example.useapiwithretrofit.model.UserTokenModel;
 import com.example.useapiwithretrofit.report.ReportModel;
+import com.example.useapiwithretrofit.report.showreport.model.OperationsReportModel;
 
 import java.util.ArrayList;
 
@@ -46,6 +47,8 @@ public interface API_Service {
     @POST("api/DailyOprActivities/Save_Kpi_Operations")
     Call<SaveOperationsResponse> saveDailyOperationsList(@Header ("Authorization") String auth, @Body ArrayList<SaveOperationsModel> arrayList);
 
+
+    ////////////////************************ REPORT SERVICES***************////////////
     @GET("api/DDL/GetDDLPriority")
     Call<ArrayList<ReportModel>>  getPriorityList(@Header ("Authorization") String auth);
 
@@ -57,5 +60,9 @@ public interface API_Service {
 
     @GET("api/DDL/GetDDLEmpProfile")
     Call<ArrayList<ReportModel>>  getEmployees(@Header ("Authorization") String auth,@Query("Company_Id") int companyId,@Query("Country_Id") int countryId,@Query("Location_Id") int LocationId);
+
+
+    @GET("api/DailyOprActivities/Get_Kpi_Operations_Reports")
+    Call<ArrayList<OperationsReportModel>> getOperationsReport(@Header("Authorization") String auth);
 
 }

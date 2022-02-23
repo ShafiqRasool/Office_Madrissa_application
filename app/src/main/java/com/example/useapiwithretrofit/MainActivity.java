@@ -60,12 +60,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-//        int current_des_id=nav_controller.getCurrentDestination().getId();
-//        if(current_des_id==R.id.homeFragment){
-//            finish();
-//        }else if(mainBinding.drawerLayout.isDrawerOpen(GravityCompat.START)){
-//            mainBinding.drawerLayout.closeDrawers();
-//        }else if(current_des_id==R.id.search_orders){
+        int current_des_id=nav_controller.getCurrentDestination().getId();
+        if(current_des_id==R.id.homeFragment){
+            finish();
+        }else if(mainBinding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mainBinding.drawerLayout.closeDrawers();
+        }else {
+            super.onBackPressed();
+        }
+//       }else if(current_des_id==R.id.search_orders){
 //            nav_controller.navigate(R.id.homeFragment);
 //
 //        }else if(current_des_id==R.id.notification2){
@@ -74,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
 //        }else if(current_des_id==R.id.about_us){
 //            nav_controller.navigate(R.id.homeFragment);
 //        }else {
-       super.onBackPressed();
       // }
     }
 

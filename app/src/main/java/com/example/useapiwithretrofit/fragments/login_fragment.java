@@ -100,7 +100,7 @@ public class login_fragment extends Fragment  {
         Call<UserTokenModel> token_call=service.getUserToken(email,password,"password");
         token_call.enqueue(new Callback<UserTokenModel>() {
             @Override
-            public void onResponse(Call<UserTokenModel> call, Response<UserTokenModel> response) {
+            public void onResponse(@NonNull Call<UserTokenModel> call, @NonNull Response<UserTokenModel> response) {
                 if(response.isSuccessful()){
                     if(response.body()!=null){
                         Toast.makeText(requireContext(),"token is -->"+ response.body().getAccessToken(), Toast.LENGTH_SHORT).show();
