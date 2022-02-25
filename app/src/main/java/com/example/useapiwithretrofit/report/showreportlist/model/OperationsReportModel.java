@@ -1,4 +1,4 @@
-package com.example.useapiwithretrofit.report.showreport.model;
+package com.example.useapiwithretrofit.report.showreportlist.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

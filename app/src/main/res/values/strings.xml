@@ -23,4 +23,6 @@
     <string name="select_report_type">Select report Type</string>
     <string name="department_wise">Department Wise</string>
     <string name="employee_wise">Employee Wise</string>
+    <string name="failure">Failure</string>
+    <string name="success">Success</string>
 </resources>

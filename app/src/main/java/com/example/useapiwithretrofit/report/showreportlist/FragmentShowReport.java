@@ -1,4 +1,4 @@
-package com.example.useapiwithretrofit.report.showreport;
+package com.example.useapiwithretrofit.report.showreportlist;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.example.useapiwithretrofit.R;
 import com.example.useapiwithretrofit.databinding.FragmentShowReportBinding;
+import com.example.useapiwithretrofit.report.models.ReportSelectionModel;
 
 public class FragmentShowReport extends Fragment {
 
@@ -35,8 +36,10 @@ public class FragmentShowReport extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ReportSelectionModel model=FragmentShowReportArgs.fromBundle(getArguments()).getReportSelection();
     mViewModel = new ViewModelProvider(this).get(FragmentShowReportViewModel.class);
-        // TODO: Use the ViewModel
+    mViewModel.setData(model);
+    mBinding.setViewModel(mViewModel);
 
     }
 

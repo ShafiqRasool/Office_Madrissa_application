@@ -2,8 +2,12 @@ package com.example.useapiwithretrofit.report;
 
 import android.app.Activity;
 import android.app.Application;
+import android.app.DatePickerDialog;
 import android.content.Context;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,6 +24,7 @@ import com.example.useapiwithretrofit.R;
 import com.example.useapiwithretrofit.report.models.ReportSelectionModel;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -50,8 +55,8 @@ public class ReportViewModel extends AndroidViewModel {
     private  ObservableField<String> selectedDepartment = new ObservableField<>() ;
     private  ObservableField<String> selectedLocation = new ObservableField<>() ;
     private ObservableField<String> selectedStatus = new ObservableField<>();
-    private ObservableField<String> formDate=new ObservableField<>();
-    private ObservableField<String> toDate=new ObservableField<>();
+    private ObservableField<String> formDate=new ObservableField<>("Form Date");
+    private ObservableField<String> toDate=new ObservableField<>("To Date");
 
     private LifecycleOwner lifecycleOwner;
     private Context context;
@@ -67,7 +72,7 @@ public class ReportViewModel extends AndroidViewModel {
         repo.getEmployees(1,1,1);
         repo.getPriority();
         reportSelectionModel=new ReportSelectionModel();
-        statusList.add("ALL");
+        statusList.add("All");
         statusList.add("failure");
         statusList.add("Success");
         getSpinnerListDate();
@@ -94,11 +99,11 @@ public class ReportViewModel extends AndroidViewModel {
 
         reportSelectionModel.setSelectedDepartment(listDepartment.indexOf(selectedDepartment.get()));
         reportSelectionModel.setSelectedLocation(listLocation.indexOf(selectedLocation.get()));
-        reportSelectionModel.setSelectedPriority(listPriority.indexOf(selectedPriority.get()));
+        reportSelectionModel.setSelectedPriority(selectedPriority.get());
         reportSelectionModel.setSelectedProfile(listProfile.indexOf(selectedProfile.get()));
         reportSelectionModel.setSelectedStatus(statusList.indexOf(selectedStatus.get()));
-        reportSelectionModel.setFromDate(formDate.get());
-        reportSelectionModel.setToDate(toDate.get());
+        reportSelectionModel.setFromDate(formDate.get().replace("-",""));
+        reportSelectionModel.setToDate(toDate.get().replace("-",""));
         NavDirections directions=SearchReportFragmentDirections.actionSearchReportFragmentToReportTypeFragment(reportSelectionModel);
         navController.navigate(directions);
     }
@@ -116,6 +121,7 @@ public class ReportViewModel extends AndroidViewModel {
             @Override
             public void onChanged(ArrayList<ReportModel> reportModels) {
                 if (reportModels != null) {
+                    listProfile.clear();
                     listProfile.add("ALL");
                     for (ReportModel model : reportModels) {
                         listProfile.add(model.getText());
@@ -129,7 +135,8 @@ public class ReportViewModel extends AndroidViewModel {
             @Override
             public void onChanged(ArrayList<ReportModel> reportModels) {
                 if (reportModels != null) {
-                    listPriority.add("ALL");
+                    listPriority.clear();
+                    listPriority.add("All");
                     for (ReportModel model : reportModels) {
                         listPriority.add(model.getText());
                     }
@@ -142,6 +149,7 @@ public class ReportViewModel extends AndroidViewModel {
             @Override
             public void onChanged(ArrayList<ReportModel> reportModels) {
                 if (reportModels != null) {
+                    listDepartment.clear();
                     listDepartment.add("ALL");
                     for (ReportModel model : reportModels) {
                         listDepartment.add(model.getText());
@@ -154,6 +162,7 @@ public class ReportViewModel extends AndroidViewModel {
             @Override
             public void onChanged(ArrayList<ReportModel> reportModels) {
                 if (reportModels != null) {
+                    listLocation.clear();
                     listLocation.add("ALL");
                     for (ReportModel model : reportModels) {
                         listLocation.add(model.getText());
@@ -166,13 +175,43 @@ public class ReportViewModel extends AndroidViewModel {
 
     }
 
-    public void setDate(LifecycleOwner lifecycleOwner, Context context, Activity activity, NavController navController){
+    public void setData(LifecycleOwner lifecycleOwner, Context context, Activity activity, NavController navController){
         this.lifecycleOwner=lifecycleOwner;
         this.context=context;
         this.activity=activity;
         this.navController=navController;
         setObserversToData();
     }
+
+    public void setDate(View view) {
+        TextView textView=(TextView) view;
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog dialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                StringBuilder builder=new StringBuilder();
+                builder.append(i);
+                builder.append("-");
+                if(i1<10){
+                    builder.append("0").append((i1+1));
+                }else{
+                    builder.append(i1+1);
+                }
+                builder.append("-");
+                if(i2<10){
+                    builder.append("0");
+                }
+                builder.append(i2);
+                textView.setText(builder.toString());
+            }
+        }, year, month, day);
+        dialog.show();
+    }
+
+    ////////////////GETTERS , SETTERS //////////////
 
     public ArrayAdapter<String> getAdapterProfile() {
         return adapterProfile;

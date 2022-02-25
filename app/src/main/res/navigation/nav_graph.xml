@@ -66,11 +66,33 @@
     </fragment>
     <fragment
         android:id="@+id/reportTypeFragment"
-        android:name="com.example.useapiwithretrofit.report.ReportTypeSelection.ReportTypeFragment"
+        android:name="com.example.useapiwithretrofit.report.report_type_selection.ReportTypeFragment"
         android:label="ReportTypeFragment" >
         <argument
             android:name="ReportSelection"
             app:argType="com.example.useapiwithretrofit.report.models.ReportSelectionModel"
             />
+        <action
+            android:id="@+id/action_reportTypeFragment_to_fragmentShowReport"
+            app:destination="@id/fragmentShowReport" />
+        <action
+            android:id="@+id/action_reportTypeFragment_to_tableReportFragment"
+            app:destination="@id/tableReportFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentShowReport"
+        android:name="com.example.useapiwithretrofit.report.showreportlist.FragmentShowReport"
+        android:label="FragmentShowReport" >
+        <argument
+            android:name="reportSelection"
+            app:argType="com.example.useapiwithretrofit.report.models.ReportSelectionModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/tableReportFragment"
+        android:name="com.example.useapiwithretrofit.report.showreportgraph.TableReportFragment"
+        android:label="TableReportFragment" >
+        <argument
+            android:name="reportSelection"
+            app:argType="com.example.useapiwithretrofit.report.models.ReportSelectionModel" />
     </fragment>
 </navigation>

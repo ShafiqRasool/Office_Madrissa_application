@@ -3,26 +3,33 @@ package com.example.useapiwithretrofit.report.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class ReportSelectionModel implements Parcelable {
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+
+public class ReportSelectionModel extends BaseObservable implements Parcelable {
+    @Bindable
     private String fromDate;
+    @Bindable
     private String toDate;
     private int selectedProfile;
-    private int selectedPriority;
+    private String selectedPriority;
     private int selectedDepartment;
     private int selectedStatus;
     private int selectedLocation;
+    private int reportType;
 
     public ReportSelectionModel() {
     }
 
     public ReportSelectionModel(Parcel in) {
         selectedProfile = in.readInt();
-        selectedPriority = in.readInt();
+        selectedPriority = in.readString();
         selectedDepartment = in.readInt();
         selectedStatus = in.readInt();
         selectedLocation = in.readInt();
         fromDate=in.readString();
         toDate=in.readString();
+        reportType=in.readInt();
     }
 
     public static final Creator<ReportSelectionModel> CREATOR = new Creator<ReportSelectionModel>() {
@@ -45,11 +52,11 @@ public class ReportSelectionModel implements Parcelable {
         this.selectedProfile = selectedProfile;
     }
 
-    public int getSelectedPriority() {
+    public String getSelectedPriority() {
         return selectedPriority;
     }
 
-    public void setSelectedPriority(int selectedPriority) {
+    public void setSelectedPriority(String selectedPriority) {
         this.selectedPriority = selectedPriority;
     }
 
@@ -82,7 +89,10 @@ public class ReportSelectionModel implements Parcelable {
     }
 
     public void setFromDate(String fromDate) {
-        this.fromDate = fromDate;
+        if(this.fromDate!=fromDate){
+            this.fromDate = fromDate;
+            notifyChange();
+        }
     }
 
     public String getToDate() {
@@ -90,7 +100,10 @@ public class ReportSelectionModel implements Parcelable {
     }
 
     public void setToDate(String toDate) {
-        this.toDate = toDate;
+        if(this.toDate!=toDate){
+            this.toDate = toDate;
+            notifyChange();
+        }
     }
 
     @Override
@@ -98,14 +111,23 @@ public class ReportSelectionModel implements Parcelable {
         return 0;
     }
 
+    public int getReportType() {
+        return reportType;
+    }
+
+    public void setReportType(int reportType) {
+        this.reportType = reportType;
+    }
+
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(selectedProfile);
-        parcel.writeInt(selectedPriority);
+        parcel.writeString(selectedPriority);
         parcel.writeInt(selectedDepartment);
         parcel.writeInt(selectedStatus);
         parcel.writeInt(selectedLocation);
         parcel.writeString(fromDate);
         parcel.writeString(toDate);
+        parcel.writeInt(reportType);
     }
 }

@@ -9,7 +9,8 @@ import com.example.useapiwithretrofit.model.UserOperationsModel;
 import com.example.useapiwithretrofit.model.User_model;
 import com.example.useapiwithretrofit.model.UserTokenModel;
 import com.example.useapiwithretrofit.report.ReportModel;
-import com.example.useapiwithretrofit.report.showreport.model.OperationsReportModel;
+import com.example.useapiwithretrofit.report.showreportgraph.TableReportModel;
+import com.example.useapiwithretrofit.report.showreportlist.model.OperationsReportModel;
 
 import java.util.ArrayList;
 
@@ -20,7 +21,6 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface API_Service {
@@ -48,7 +48,7 @@ public interface API_Service {
     Call<SaveOperationsResponse> saveDailyOperationsList(@Header ("Authorization") String auth, @Body ArrayList<SaveOperationsModel> arrayList);
 
 
-    ////////////////************************ REPORT SERVICES***************////////////
+    ////////////////************************ REPORT SERVICES***************/////////////////////////////
     @GET("api/DDL/GetDDLPriority")
     Call<ArrayList<ReportModel>>  getPriorityList(@Header ("Authorization") String auth);
 
@@ -61,8 +61,12 @@ public interface API_Service {
     @GET("api/DDL/GetDDLEmpProfile")
     Call<ArrayList<ReportModel>>  getEmployees(@Header ("Authorization") String auth,@Query("Company_Id") int companyId,@Query("Country_Id") int countryId,@Query("Location_Id") int LocationId);
 
+    @GET("api/DailyOprActivities/Get_Kpi_Operations_Reports")
+    Call<ArrayList<OperationsReportModel>> getOperationsReport(@Header("Authorization")String auth,@Query("From_date") String From_date,@Query("To_date") String To_date,@Query("Perform_by") int Perform_by,
+                                                               @Query("Section_Id") int Section_Id,@Query("Department_id") int Department_id,@Query("Status") int Status,@Query("Priority") String Priority,@Query("Rpt_Id") int Rpt_Id);
 
     @GET("api/DailyOprActivities/Get_Kpi_Operations_Reports")
-    Call<ArrayList<OperationsReportModel>> getOperationsReport(@Header("Authorization") String auth);
+    Call<ArrayList<TableReportModel>> getTableReport(@Header("Authorization")String auth, @Query("From_date") String From_date, @Query("To_date") String To_date, @Query("Perform_by") int Perform_by,
+                                                     @Query("Section_Id") int Section_Id, @Query("Department_id") int Department_id, @Query("Status") int Status, @Query("Priority") String Priority, @Query("Rpt_Id") int Rpt_Id);
 
 }

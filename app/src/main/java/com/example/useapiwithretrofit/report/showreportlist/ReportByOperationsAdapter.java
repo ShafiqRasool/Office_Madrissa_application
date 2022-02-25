@@ -1,7 +1,6 @@
-package com.example.useapiwithretrofit.report.showreport;
+package com.example.useapiwithretrofit.report.showreportlist;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.useapiwithretrofit.R;
 import com.example.useapiwithretrofit.databinding.CardViewOperationsReportBinding;
-import com.example.useapiwithretrofit.report.showreport.model.OperationsReportModel;
+import com.example.useapiwithretrofit.report.showreportlist.model.OperationsReportModel;
 
 import java.util.ArrayList;
 
@@ -18,11 +17,10 @@ public class ReportByOperationsAdapter extends RecyclerView.Adapter<ReportByOper
 
 
     LayoutInflater inflater;
-    ArrayList<OperationsReportModel> reportModelArrayList;
+    ArrayList<OperationsReportModel> reportModelArrayList=new ArrayList<>();
     CardViewOperationsReportBinding mBinding;
 
     public void setReportModelArrayList(ArrayList<OperationsReportModel> reportModelArrayList) {
-        reportModelArrayList=new ArrayList<>();
         this.reportModelArrayList = reportModelArrayList;
     }
 
@@ -39,6 +37,7 @@ public class ReportByOperationsAdapter extends RecyclerView.Adapter<ReportByOper
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         OperationsReportModel model=reportModelArrayList.get(position);
+        model.setOprTransDate(model.getOprTransDate().substring(0,10));
         holder.setView(model);
     }
 
@@ -55,6 +54,7 @@ public class ReportByOperationsAdapter extends RecyclerView.Adapter<ReportByOper
         }
         public void setView(OperationsReportModel model){
             cardBinding.setOperation(model);
+            cardBinding.executePendingBindings();
         }
     }
 }
