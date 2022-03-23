@@ -24,14 +24,14 @@ public class OperationsRepo {
     int EmpID;
     String token;
 
-    public void setDailyNotifications(DailyNotifications setDailyNotifications) {
-        this.setDailyNotifications = setDailyNotifications;
-    }
-
     public OperationsRepo(Context context) {
         EmpID = SharedPreferencesHelper.getInstance(context).getEmpId();
         token = SharedPreferencesHelper.getInstance(context).getToken();
         this.context = context;
+    }
+
+    public void setDailyNotifications(DailyNotifications setDailyNotifications) {
+        this.setDailyNotifications = setDailyNotifications;
     }
 
     public void getDailyOperations(String date) {

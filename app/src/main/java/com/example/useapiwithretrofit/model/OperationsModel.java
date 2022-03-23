@@ -2,16 +2,10 @@ package com.example.useapiwithretrofit.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.view.View;
-import android.widget.EditText;
-
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
-import androidx.databinding.BindingAdapter;
-import androidx.databinding.ObservableField;
 
-import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -19,6 +13,17 @@ import java.util.Objects;
 
 public class OperationsModel extends BaseObservable implements Parcelable {
 
+    public static final Creator<OperationsModel> CREATOR = new Creator<OperationsModel>() {
+        @Override
+        public OperationsModel createFromParcel(Parcel in) {
+            return new OperationsModel(in);
+        }
+
+        @Override
+        public OperationsModel[] newArray(int size) {
+            return new OperationsModel[size];
+        }
+    };
     @SerializedName("Opr_Code")
     @Expose
     private String oprCode;
@@ -37,20 +42,16 @@ public class OperationsModel extends BaseObservable implements Parcelable {
     @SerializedName("Priority")
     @Expose
     private String priority;
-
-
     @SerializedName("Opr_Id")
     @Expose
     private int oprId;
     @SerializedName("Opr_Trans_Id")
     @Expose
     private int oprTransId;
-
     @Bindable
     @SerializedName("Status")
     @Expose
     private boolean status;
-
     @Bindable
     @SerializedName("Remarks")
     @Expose
@@ -80,18 +81,6 @@ public class OperationsModel extends BaseObservable implements Parcelable {
         Emp_id = in.readInt();
         IsSend = in.readByte() != 0;
     }
-
-    public static final Creator<OperationsModel> CREATOR = new Creator<OperationsModel>() {
-        @Override
-        public OperationsModel createFromParcel(Parcel in) {
-            return new OperationsModel(in);
-        }
-
-        @Override
-        public OperationsModel[] newArray(int size) {
-            return new OperationsModel[size];
-        }
-    };
 
     public int getOprId() {
         return oprId;
@@ -187,7 +176,7 @@ public class OperationsModel extends BaseObservable implements Parcelable {
     }
 
     public void setStatus(boolean status) {
-        if(status!=this.status){
+        if (status != this.status) {
             this.status = status;
             notifyChange();
         }
@@ -198,8 +187,8 @@ public class OperationsModel extends BaseObservable implements Parcelable {
     }
 
     public void setRemarks(String remarks) {
-        if(!Objects.equals(remarks, this.remarks))
-        this.remarks = remarks;
+        if (!Objects.equals(remarks, this.remarks))
+            this.remarks = remarks;
         notifyChange();
     }
 

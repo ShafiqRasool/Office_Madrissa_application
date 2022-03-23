@@ -1,6 +1,9 @@
 package com.example.useapiwithretrofit.operations;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,10 +14,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.useapiwithretrofit.R;
 import com.example.useapiwithretrofit.databinding.FragmentDashboardBinding;
 
@@ -22,11 +21,11 @@ import org.jetbrains.annotations.NotNull;
 
 
 public class FragmentOperations extends Fragment {
+    public static SaveOperationsResponse saveResponse;
+    static String date;
     FragmentDashboardBinding mBinding;
     OperationsViewModel viewModel;
-    public static SaveOperationsResponse saveResponse;
     NavController navController;
-    static String date;
 
     @Override
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,

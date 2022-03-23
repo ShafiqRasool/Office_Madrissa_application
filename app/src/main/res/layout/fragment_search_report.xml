@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="viewModel" type="com.example.useapiwithretrofit.report.ReportViewModel" />
+        <variable name="viewModel" type="com.example.useapiwithretrofit.report.select_report.ReportViewModel" />
 
     </data>
 

@@ -1,4 +1,3 @@
-
 package com.example.useapiwithretrofit.model;
 
 import com.google.gson.annotations.Expose;

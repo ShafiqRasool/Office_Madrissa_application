@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.useapiwithretrofit.BR;
 import com.example.useapiwithretrofit.R;
 import com.example.useapiwithretrofit.databinding.LayoutCardViewOperationBinding;
 import com.example.useapiwithretrofit.model.OperationsModel;
@@ -20,12 +19,12 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.view
     public ArrayList<OperationsModel> modelArrayList = new ArrayList<>();
     private LayoutInflater inflater;
 
-    public void setModelArrayList(ArrayList<OperationsModel> modelArrayList) {
-        this.modelArrayList = modelArrayList;
-    }
-
     public ArrayList<OperationsModel> getModelArrayList() {
         return modelArrayList;
+    }
+
+    public void setModelArrayList(ArrayList<OperationsModel> modelArrayList) {
+        this.modelArrayList = modelArrayList;
     }
 
     @NonNull
@@ -42,13 +41,9 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.view
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         OperationsModel model = modelArrayList.get(position);
         holder.bind(model);
-        holder.mBinding.switchAction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                model.setStatus(holder.mBinding.switchAction.isChecked());
-            }
-        });
+        holder.mBinding.switchAction.setOnClickListener(view -> model.setStatus(holder.mBinding.switchAction.isChecked()));
     }
+
 
     @Override
     public int getItemCount() {

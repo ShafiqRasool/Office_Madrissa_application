@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    >
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.useapiwithretrofit.tasklist.TaskModel" />
+    </data>
+<androidx.cardview.widget.CardView
+    android:id="@+id/CardViewTasks"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="7dp"
+    android:layout_marginHorizontal="5dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="7dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/custom_pink"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/due_date_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/custom_gray_light"
+            android:paddingLeft="3dp"
+            android:text="Due date/time"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/due_date_time_display"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <TextView
+            android:id="@+id/assign_to"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/custom_gray_light"
+            android:paddingLeft="3dp"
+            android:text="Assign to "
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/assign_to_display"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/due_date_time" />
+
+        <TextView
+            android:id="@+id/supervisor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/custom_gray_light"
+            android:paddingLeft="3dp"
+            android:text="Supervisor"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/supervisor_display"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/assign_to" />
+
+        <TextView
+            android:id="@+id/due_date_time_display"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:paddingLeft="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/due_date_time"
+            app:layout_constraintTop_toTopOf="@id/due_date_time" />
+
+        <TextView
+            android:id="@+id/assign_to_display"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/assign_to"
+            app:layout_constraintTop_toTopOf="@id/assign_to"
+            android:paddingLeft="3dp" />
+
+        <TextView
+            android:id="@+id/supervisor_display"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:paddingLeft="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/supervisor"
+            app:layout_constraintTop_toTopOf="@id/supervisor" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+
+</layout>

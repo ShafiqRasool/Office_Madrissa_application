@@ -9,6 +9,17 @@ import com.google.gson.annotations.SerializedName;
 public class SaveOperationsResponse implements Parcelable {
 
 
+    public static final Creator<SaveOperationsResponse> CREATOR = new Creator<SaveOperationsResponse>() {
+        @Override
+        public SaveOperationsResponse createFromParcel(Parcel in) {
+            return new SaveOperationsResponse(in);
+        }
+
+        @Override
+        public SaveOperationsResponse[] newArray(int size) {
+            return new SaveOperationsResponse[size];
+        }
+    };
     @SerializedName("RcKey")
     @Expose
     private Long rcKey;
@@ -80,18 +91,6 @@ public class SaveOperationsResponse implements Parcelable {
         emailHost = in.readString();
         userName = in.readString();
     }
-
-    public static final Creator<SaveOperationsResponse> CREATOR = new Creator<SaveOperationsResponse>() {
-        @Override
-        public SaveOperationsResponse createFromParcel(Parcel in) {
-            return new SaveOperationsResponse(in);
-        }
-
-        @Override
-        public SaveOperationsResponse[] newArray(int size) {
-            return new SaveOperationsResponse[size];
-        }
-    };
 
     public Long getRcKey() {
         return rcKey;

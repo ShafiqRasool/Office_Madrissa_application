@@ -10,8 +10,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.navigation.NavController;
 
-import com.example.useapiwithretrofit.Utils.CustomAlertDialog;
 import com.example.useapiwithretrofit.R;
+import com.example.useapiwithretrofit.Utils.CustomAlertDialog;
 import com.example.useapiwithretrofit.Utils.SharedPreferencesHelper;
 import com.example.useapiwithretrofit.model.OperationsModel;
 import com.example.useapiwithretrofit.model.SaveOperationsModel;
@@ -20,11 +20,11 @@ import com.example.useapiwithretrofit.model.SaveOperationsResponse;
 import java.util.ArrayList;
 
 public class OperationsViewModel extends AndroidViewModel {
+    private final OperationAdapter adapter;
     private MutableLiveData<ArrayList<OperationsModel>> liveData = new MutableLiveData<>();
     private ObservableField<Boolean> Visibility;
     private OperationsRepo repo;
     private String date = null;
-    private final OperationAdapter adapter;
     private int EmpId;
     private NavController navController;
     private Activity activity;

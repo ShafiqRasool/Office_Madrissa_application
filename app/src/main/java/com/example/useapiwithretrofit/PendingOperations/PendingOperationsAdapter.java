@@ -1,6 +1,5 @@
 package com.example.useapiwithretrofit.PendingOperations;
 
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.useapiwithretrofit.BR;
+
 import com.example.useapiwithretrofit.R;
 import com.example.useapiwithretrofit.databinding.SingleItemPendingsBinding;
 import com.example.useapiwithretrofit.model.CustomClickListener;
@@ -79,7 +77,7 @@ public class PendingOperationsAdapter extends RecyclerView.Adapter<PendingOperat
         }
 
         public void bind(Object obj) {
-            binding.setVariable(BR.pending, obj);
+            binding.setPending((PendingModel) obj);
             binding.executePendingBindings();
         }
 

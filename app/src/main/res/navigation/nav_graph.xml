@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/search_orders"
-        android:name="com.example.useapiwithretrofit.report.SearchReportFragment"
+        android:name="com.example.useapiwithretrofit.report.select_report.SearchReportFragment"
         android:label="fragment_search_orders"
         tools:layout="@layout/fragment_search_report" />
     <fragment
@@ -38,7 +38,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/notification2"
-        android:name="com.example.useapiwithretrofit.Notifications.Notification"
+        android:name="com.example.useapiwithretrofit.notifications.Notification"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
     <fragment
@@ -58,7 +58,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchReportFragment"
-        android:name="com.example.useapiwithretrofit.report.SearchReportFragment"
+        android:name="com.example.useapiwithretrofit.report.select_report.SearchReportFragment"
         android:label="SearchReportFragment" >
         <action
             android:id="@+id/action_searchReportFragment_to_reportTypeFragment"
@@ -70,7 +70,7 @@
         android:label="ReportTypeFragment" >
         <argument
             android:name="ReportSelection"
-            app:argType="com.example.useapiwithretrofit.report.models.ReportSelectionModel"
+            app:argType="com.example.useapiwithretrofit.report.select_report.ReportSelectionModel"
             />
         <action
             android:id="@+id/action_reportTypeFragment_to_fragmentShowReport"
@@ -81,18 +81,20 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentShowReport"
-        android:name="com.example.useapiwithretrofit.report.showreportlist.FragmentShowReport"
+        android:name="com.example.useapiwithretrofit.report.show_report_in_list.FragmentShowReport"
         android:label="FragmentShowReport" >
         <argument
             android:name="reportSelection"
-            app:argType="com.example.useapiwithretrofit.report.models.ReportSelectionModel" />
+            app:argType="com.example.useapiwithretrofit.report.select_report.ReportSelectionModel"
+            />
+
     </fragment>
     <fragment
         android:id="@+id/tableReportFragment"
-        android:name="com.example.useapiwithretrofit.report.showreportgraph.TableReportFragment"
+        android:name="com.example.useapiwithretrofit.report.show_report_graph.TableReportFragment"
         android:label="TableReportFragment" >
         <argument
             android:name="reportSelection"
-            app:argType="com.example.useapiwithretrofit.report.models.ReportSelectionModel" />
+            app:argType="com.example.useapiwithretrofit.report.select_report.ReportSelectionModel" />
     </fragment>
 </navigation>

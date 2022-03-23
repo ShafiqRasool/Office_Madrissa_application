@@ -4,11 +4,9 @@ import android.content.Context;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.NavController;
 
 import com.example.useapiwithretrofit.DB.API_Service;
 import com.example.useapiwithretrofit.DB.RetrofitClientInstance;
-import com.example.useapiwithretrofit.R;
 import com.example.useapiwithretrofit.Utils.SharedPreferencesHelper;
 import com.example.useapiwithretrofit.model.PendingModel;
 
@@ -20,19 +18,14 @@ import retrofit2.Response;
 
 public class PendingOperationsRepo {
     dataFound dataFound;
-
-    public void setDataFound(dataFound dataFound) {
-        this.dataFound = dataFound;
-    }
-
-    public interface dataFound {
-        void setData(ArrayList<PendingModel> modelArrayList);
-    }
-
     Context context;
 
     public PendingOperationsRepo(Context context) {
         this.context = context;
+    }
+
+    public void setDataFound(dataFound dataFound) {
+        this.dataFound = dataFound;
     }
 
     public void getPendingOperations() {
@@ -54,6 +47,10 @@ public class PendingOperationsRepo {
                 Toast.makeText(context, "Failed to Get data", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public interface dataFound {
+        void setData(ArrayList<PendingModel> modelArrayList);
     }
 
 

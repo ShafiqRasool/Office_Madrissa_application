@@ -1,6 +1,9 @@
 package com.example.useapiwithretrofit.Home;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,10 +11,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.useapiwithretrofit.R;
 import com.example.useapiwithretrofit.databinding.FragmentHomeBinding;
@@ -43,11 +42,11 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        navController= NavHostFragment.findNavController(this);
-        mBinding=FragmentHomeBinding.inflate(getLayoutInflater());
-        BottomNavigationView navigationView=(getActivity()).findViewById(R.id.bottom_navigation);
+        navController = NavHostFragment.findNavController(this);
+        mBinding = FragmentHomeBinding.inflate(getLayoutInflater());
+        BottomNavigationView navigationView = (getActivity()).findViewById(R.id.bottom_navigation);
         navigationView.setVisibility(View.VISIBLE);
-        DrawerLayout navDrawer=(getActivity()).findViewById(R.id.drawer_layout);
+        DrawerLayout navDrawer = (getActivity()).findViewById(R.id.drawer_layout);
         navDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         return mBinding.getRoot();
     }

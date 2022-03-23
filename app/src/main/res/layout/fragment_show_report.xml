@@ -5,13 +5,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.useapiwithretrofit.report.showreportlist.FragmentShowReportViewModel" />
+            type="com.example.useapiwithretrofit.report.show_report_in_list.FragmentShowReportViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".report.showreportlist.FragmentShowReport">
+    tools:context=".report.show_report_in_list.FragmentShowReport">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_show_report"

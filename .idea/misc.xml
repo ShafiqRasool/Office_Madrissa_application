@@ -3,30 +3,41 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.147" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/drawable-v24/ic_target.xml" value="0.147" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.1095" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/drawable/ic_outline_list_24.xml" value="0.147" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/drawable/table_element_background.xml" value="0.147" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout-v23/fragment_report_type.xml" value="0.35104166666666664" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/activity_main.xml" value="0.7892271662763466" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/card_view_operations_report.xml" value="0.6992084432717678" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/card_view_orders.xml" value="0.7892271662763466" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/custom_aler_dialog.xml" value="0.7892271662763466" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/drawer_header.xml" value="0.7892271662763466" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/fragment_about_us.xml" value="0.7892271662763466" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/fragment_dashboard.xml" value="0.9" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/fragment_home.xml" value="0.7892271662763466" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/fragment_notification.xml" value="0.7892271662763466" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/fragment_operations_saved.xml" value="0.7892271662763466" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/fragment_pending_operations.xml" value="0.5525793650793651" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/fragment_report_type.xml" value="0.7402234636871509" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/fragment_search_report.xml" value="0.5490506329113924" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/fragment_show_report.xml" value="0.6992084432717678" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/layout_card_view_operation.xml" value="0.5701357466063348" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/single_item_notification.xml" value="0.5525793650793651" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/single_item_pendings.xml" value="0.75" />
-        <entry key="..\:/Office_Madrissa_application_at_home/app/src/main/res/layout/table_report_fragment.xml" value="0.6543535620052771" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/drawable/background.xml" value="0.1025" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/drawable/btn_background_singin.xml" value="0.1025" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/drawable/card_view_notifications.xml" value="0.1255" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.1025" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.1025" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.1025" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/drawable/ic_baseline_file_copy_24.xml" value="0.1025" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.1025" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.1025" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.1" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/drawable/table_element_background.xml" value="0.1025" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/activity_main.xml" value="0.20859375" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/add_task_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/card_view_notifications.xml" value="0.25339925834363414" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/card_view_operations_report.xml" value="0.22" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/card_view_orders.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/card_view_tasks_list.xml" value="0.22402736212056434" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/custom_aler_dialog.xml" value="0.25" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/drawer_header.xml" value="0.3859375" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/fragment_about_us.xml" value="0.3859375" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/fragment_notification.xml" value="0.18999073215940684" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/fragment_operations_saved.xml" value="0.409375" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/fragment_pending_operations.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/fragment_report_type.xml" value="0.18" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/fragment_search_orders.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/fragment_search_report.xml" value="0.18823529411764706" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/fragment_show_report.xml" value="0.20768925881886643" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/fragment_task_list.xml" value="0.25" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/layout_card_view_operation.xml" value="0.23125" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/single_item_notification.xml" value="0.1984375" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/single_item_pendings.xml" value="0.2145748987854251" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/layout/table_report_fragment.xml" value="0.12569474134245404" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.19453125" />
+        <entry key="..\:/Users/shahz/AndroidStudioProjects/useapiwithretrofit Extracted/useapiwithretrofit/app/src/main/res/menu/drawer_menu.xml" value="0.22083333333333333" />
       </map>
     </option>
   </component>

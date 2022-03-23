@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".tasklist.addtask.AddTaskFragment">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.useapiwithretrofit.tasklist.TaskModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_title_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginVertical="4dp"
+            android:elevation="5dp"
+            android:hint="Title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/et_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <EditText
+            android:id="@+id/et_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginVertical="4dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/table_element_background"
+            android:elevation="5dp"
+            android:gravity="top"
+            android:hint="Description"
+            android:minLines="3"
+            android:padding="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_title_layout" />
+
+        <TextView
+            android:id="@+id/tvSelectDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/table_element_background"
+            android:drawableStart="@drawable/ic_baseline_calendar_today_24"
+            android:drawablePadding="2dp"
+            android:drawableTint="@color/custom_pink"
+            android:elevation="5dp"
+            android:gravity="center_vertical"
+            android:hint="Select Date"
+            android:paddingHorizontal="3dp"
+            android:paddingVertical="4dp"
+            android:paddingStart="2dp"
+            app:layout_constraintEnd_toStartOf="@id/tvSelectTime"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_description"
+            tools:ignore="UseCompatTextViewDrawableXml" />
+
+        <TextView
+            android:id="@+id/tvSelectTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/table_element_background"
+            android:drawableStart="@drawable/ic_time_24"
+            android:drawablePadding="2dp"
+            android:drawableTint="@color/custom_pink"
+            android:elevation="5dp"
+            android:gravity="center_vertical"
+            android:hint="Select Time"
+            android:paddingHorizontal="3dp"
+            android:paddingVertical="4dp"
+            android:paddingStart="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvSelectDate"
+            app:layout_constraintTop_toTopOf="@id/tvSelectDate"
+            tools:ignore="UseCompatTextViewDrawableXml" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/spinner_assign_to_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginVertical="4dp"
+            android:layout_marginTop="5dp"
+            android:elevation="5dp"
+            android:hint="Assign To"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSelectDate">
+
+            <AutoCompleteTextView
+                android:id="@+id/spinner_assign_to"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/spinner_Supervisor_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginVertical="4dp"
+            android:layout_marginTop="5dp"
+            android:elevation="5dp"
+            android:hint="Supervisor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner_assign_to_layout">
+
+            <AutoCompleteTextView
+                android:id="@+id/spinner_Supervisor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/spinner_task_owner_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginVertical="4dp"
+            android:layout_marginTop="5dp"
+            android:elevation="5dp"
+            android:hint="Task Owner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner_Supervisor_layout">
+
+            <AutoCompleteTextView
+                android:id="@+id/spinner_task_owner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

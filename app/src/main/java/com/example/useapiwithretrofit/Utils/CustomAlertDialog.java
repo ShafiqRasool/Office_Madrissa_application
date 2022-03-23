@@ -10,16 +10,18 @@ import com.example.useapiwithretrofit.databinding.CustomAlerDialogBinding;
 public class CustomAlertDialog {
     private static CustomAlertDialog customAlertDialog;
     private Activity activity;
-    public static synchronized CustomAlertDialog getInstance(){
-        if(customAlertDialog==null){
-            customAlertDialog=new CustomAlertDialog();
+
+    public static synchronized CustomAlertDialog getInstance() {
+        if (customAlertDialog == null) {
+            customAlertDialog = new CustomAlertDialog();
         }
         return customAlertDialog;
     }
-    public void showDialog(String message, String title , Activity activity, Context context) {
+
+    public void showDialog(String message, String title, Activity activity, Context context) {
         this.activity = activity;
         CustomAlerDialogBinding dialogBinding = CustomAlerDialogBinding.inflate(activity.getLayoutInflater());
-        AlertDialog alertDialog = new AlertDialog.Builder( context).setView(dialogBinding.getRoot()).setCancelable(true).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(context).setView(dialogBinding.getRoot()).setCancelable(true).create();
         dialogBinding.title.setText(title);
         dialogBinding.body.setText(message);
         alertDialog.show();
@@ -30,7 +32,6 @@ public class CustomAlertDialog {
                 alertDialog.dismiss();
             }
         });
-
 
 
     }

@@ -2,6 +2,7 @@ package com.example.useapiwithretrofit.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
 public class UserOperationsModel {
 
     @SerializedName("Opr_Id")

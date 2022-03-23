@@ -3,17 +3,17 @@ package com.example.useapiwithretrofit.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PendingModel  {
+public class PendingModel {
 
-        @SerializedName("date")
-        @Expose
-        private String date;
-        @SerializedName("Date_String")
-        @Expose
-        private String dateString;
-        @SerializedName("day_name")
-        @Expose
-        private String dayName;
+    @SerializedName("date")
+    @Expose
+    private String date;
+    @SerializedName("Date_String")
+    @Expose
+    private String dateString;
+    @SerializedName("day_name")
+    @Expose
+    private String dayName;
 
     public String getDate() {
         return date;

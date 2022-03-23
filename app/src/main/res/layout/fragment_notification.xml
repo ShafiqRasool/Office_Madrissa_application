@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout>
 <data>
-
+    <variable
+        name="viewModel"
+        type="com.example.useapiwithretrofit.notifications.NotificationViewModel" />
 </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Notifications.Notification">
+    tools:context=".notifications.Notification">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Rec_view_notifications"
@@ -22,6 +24,8 @@
         android:fitsSystemWindows="true"
         android:orientation="vertical"
         app:barrierMargin="4dp"
+        tools:listitem="@layout/card_view_notifications"
+        app:SetCustomAdapter="@{viewModel.adapter}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
